@@ -18,7 +18,7 @@
     <PrebuiltDir>$(AndroidNdkDir)\toolchains\$(PlatformToolsetVersion)\prebuilt\$(PrebuiltWinDirName)</PrebuiltDir>
 
     <!-- Path to the GCC compilation tools -->
-    <GccToolsPath>$(AndroidNdkDir)\toolchains\$(PlatformToolsetVersion)\prebuilt\$(PrebuiltWinDirName)\bin</GccToolsPath>
+    <GccToolsPath>$(PrebuiltDir)\bin</GccToolsPath>
 
     <!-- GCC compilation tool filenames -->
     <GccCompiler>i686-linux-android-g++.exe</GccCompiler>
