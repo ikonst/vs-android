@@ -36,6 +36,7 @@
 
       <RuntimeTypeInfo          Condition="'%(ClCompile.RuntimeTypeInfo)'           == ''">false</RuntimeTypeInfo>
       <ShortEnums               Condition="'%(ClCompile.ShortEnums)'                == ''">false</ShortEnums>
+      <ShortWchar               Condition="'%(ClCompile.ShortWchar)'                == ''">false</ShortWchar>
 
       <CompileAs                Condition="'%(ClCompile.CompileAs)'                 == ''">Default</CompileAs>
 

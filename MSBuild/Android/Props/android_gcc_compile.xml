@@ -86,6 +86,8 @@
   </BoolProperty>
   <BoolProperty Name="ShortEnums" DisplayName="Short Enums" Category="Language" Switch="fshort-enums" ReverseSwitch="fno-short-enums">
   </BoolProperty>
+  <BoolProperty Name="ShortWChar" DisplayName="Short wchar_t" Category="Language" Description="Override the underlying type for ‘wchar_t’ to be ‘short unsigned int’ instead of the default for the target.">
+  </BoolProperty>
 
 
   <!-- Precompiled Headers -->
