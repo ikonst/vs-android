@@ -96,7 +96,7 @@
       <NoExecStack                Condition="'%(Link.NoExecStack)'                  == ''">true</NoExecStack>
       <ThumbMode                  Condition="'%(Link.ThumbMode)'                    == ''">true</ThumbMode>
       <RPathLink                  Condition="'%(Link.RPathLink)'                    == ''">$(AndroidLibDir)</RPathLink>
-      <SysRootDir                 Condition="'%(Link.SysRootDir)'                   == ''">$(AndroidLibDir)\..\..</SysRootDir>
+      <SysRootDir                 Condition="'%(Link.SysRootDir)'                   == ''">$(AndroidSysRootDir)</SysRootDir>
       <StlLibs                    Condition="'%(Link.StlLibs)'                      == ''">$(AndroidStlLibs)</StlLibs>
 
       <SystemLibraryDirectories	  Condition="'%(Link.SystemLibraryDirectories)'     == ''">$(LibraryPath)</SystemLibraryDirectories>

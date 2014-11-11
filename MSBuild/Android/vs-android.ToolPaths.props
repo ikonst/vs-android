@@ -11,9 +11,9 @@
   <PropertyGroup>
 
     <AndroidApiDir>$(AndroidNdkDir)\platforms\$(AndroidAPILevel)</AndroidApiDir>
-
-    <AndroidIncludeDir>$(AndroidApiDir)\arch-$(PlatformShortName)\usr\include</AndroidIncludeDir>
-    <AndroidLibDir>$(AndroidApiDir)\arch-$(PlatformShortName)\usr\lib</AndroidLibDir>
+    <AndroidSysRootDir>$(AndroidApiDir)\arch-$(PlatformShortName)</AndroidSysRootDir>
+    <AndroidIncludeDir>$(AndroidSysRootDir)\usr\include</AndroidIncludeDir>
+    <AndroidLibDir>$(AndroidSysRootDir)\usr\lib</AndroidLibDir>
 
     <ArchStlDirName Condition="'$(AndroidArch)' == 'armv5te'">armeabi</ArchStlDirName>
     <ArchStlDirName Condition="'$(AndroidArch)' == 'armv7-a'">armeabi-v7a</ArchStlDirName>
