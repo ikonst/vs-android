@@ -20,6 +20,7 @@
       <EchoCommandLines         Condition="'%(ClCompile.EchoCommandLines)'          == ''">false</EchoCommandLines>
 
       <ThumbMode                Condition="'%(ClCompile.ThumbMode)'                 == ''">false</ThumbMode>
+      <Neon                     Condition="'%(ClCompile.Neon)'                      == ''">false</Neon>
       <StrictAliasing           Condition="'%(ClCompile.StrictAliasing)'            == ''">false</StrictAliasing>
       <UnswitchLoops            Condition="'%(ClCompile.UnswitchLoops)'             == ''">true</UnswitchLoops>
       <InlineLimit              Condition="'%(ClCompile.InlineLimit)'               == ''">100</InlineLimit>

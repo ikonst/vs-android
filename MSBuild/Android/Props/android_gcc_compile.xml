@@ -56,6 +56,8 @@
   </EnumProperty>
   <BoolProperty Name="ThumbMode" DisplayName="Thumb Mode (ARM only)" Category="Optimization" Switch="mthumb" ReverseSwitch="marm">
   </BoolProperty>
+  <BoolProperty Name="Neon" DisplayName="NEON Intrinsics (ARM only)" Category="Optimization" Switch="mfpu=neon" Description="Allows the use of ARM Advanced SIMD (a.k.a. NEON) GCC intrinsics in your C and C++ sources.">
+  </BoolProperty>
   <BoolProperty Name="StrictAliasing" DisplayName="Strict Aliasing" Category="Optimization" Switch="fstrict-aliasing" ReverseSwitch="fno-strict-aliasing">
   </BoolProperty>
   <BoolProperty Name="UnswitchLoops" DisplayName="Unswitch Loops" Category="Optimization" Switch="funswitch-loops">

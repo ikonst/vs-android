@@ -65,10 +65,11 @@
       </ClCompile>
     </ItemGroup>
 
-    <!-- Disable thumb switch for x86 builds -->
+    <!-- Disable thumb switch for non-ARM architectures -->
     <ItemGroup Condition="'$(PlatformShortName)' != 'arm'">
       <ClCompile>
         <ThumbMode>ignore</ThumbMode>
+        <Neon>ignore</Neon>
       </ClCompile>
     </ItemGroup>
 
