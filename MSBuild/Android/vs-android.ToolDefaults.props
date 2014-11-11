@@ -95,6 +95,7 @@
       <GenerateSharedLibrary      Condition="'%(Link.GenerateSharedLibrary)'        == ''">true</GenerateSharedLibrary>
       <NoExecStack                Condition="'%(Link.NoExecStack)'                  == ''">true</NoExecStack>
       <ThumbMode                  Condition="'%(Link.ThumbMode)'                    == ''">true</ThumbMode>
+      <RelocationReadOnly         Condition="'%(Link.RelocationReadOnly)'           == ''">true</RelocationReadOnly>
       <RPathLink                  Condition="'%(Link.RPathLink)'                    == ''">$(AndroidLibDir)</RPathLink>
       <SysRootDir                 Condition="'%(Link.SysRootDir)'                   == ''">$(AndroidSysRootDir)</SysRootDir>
       <StlLibs                    Condition="'%(Link.StlLibs)'                      == ''">$(AndroidStlLibs)</StlLibs>

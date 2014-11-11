@@ -52,6 +52,9 @@
   </StringProperty>
   <BoolProperty Name="ReportUndefinedSymbols" DisplayName="Report Undefined Symbols" Category="Advanced" Switch="Wl,--no-undefined">
   </BoolProperty>
+  <!-- Equivalent to NDK variable LOCAL_DISABLE_RELRO -->
+  <BoolProperty Name="RelocationReadOnly" Category="Advanced" Switch="Wl,-z,relro -Wl,-z,now" ReverseSwitch="Wl,-z,norelro -Wl,-z,lazy" Description="NDK compiled code is built with read-only relocations and GOT protection. This instructs the runtime linker to mark certain regions of memory as being read-only after relocation, making certain security exploits (such as GOT overwrites) harder to perform.">
+  </BoolProperty>
 
   <!-- Hidden -->
   <StringListProperty Subtype="folder" Name="SystemLibraryDirectories" Category="General" Visible="false" Switch="L">
