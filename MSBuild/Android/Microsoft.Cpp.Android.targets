@@ -71,6 +71,9 @@
         <ThumbMode>ignore</ThumbMode>
         <Neon>ignore</Neon>
       </ClCompile>
+     <ClLink>
+        <ThumbMode>ignore</ThumbMode>
+     </ClLink>
     </ItemGroup>
 
     <!-- Invoke GCCCompile to build C/C++ PCH files in a separate pass prior to all other files -->
@@ -181,16 +184,6 @@
       <Link_MinimalRebuildFromTracking Condition="'$(BuildType)' != 'Build' or '$(ForceRebuild)' == 'true'" >false</Link_MinimalRebuildFromTracking>
       <Link_MinimalRebuildFromTracking Condition="'$(Link_MinimalRebuildFromTracking)' == ''">true</Link_MinimalRebuildFromTracking>
     </PropertyGroup>
-
-    <ItemGroup>
-      <Link>
-        <SystemLibraryDirectories Condition="'%(Link.LinkGccLibThumb)' == 'true'">%(Link.SystemLibraryDirectories);$(GccLibPath_Thumb)</SystemLibraryDirectories>
-        <SystemLibraryDirectories Condition="'%(Link.LinkGccLibThumb)' != 'true'">%(Link.SystemLibraryDirectories);$(GccLibPath)</SystemLibraryDirectories>
-
-        <StlLibs Condition="'%(Link.LinkGccLibThumb)' == 'true' and '$(GccVersion)' != '4.8'">$(GccLibPath_Thumb)\crtbeginS.o;%(Link.StlLibs)</StlLibs>
-        <StlLibs Condition="'%(Link.LinkGccLibThumb)' != 'true' and '$(GccVersion)' != '4.8'">$(GccLibPath)\crtbeginS.o;%(Link.StlLibs)</StlLibs>
-      </Link>
-    </ItemGroup>
 
     <GCCLink
         BuildingInIDE                  ="$(BuildingInsideVisualStudio)"

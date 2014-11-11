@@ -88,13 +88,13 @@
       <AdditionalDependencies     Condition="'%(Link.AdditionalDependencies)'       == ''"></AdditionalDependencies>
       <IgnoreAllDefaultLibraries  Condition="'%(Link.IgnoreAllDefaultLibraries)'    == ''">true</IgnoreAllDefaultLibraries>
       <AndroidSystemLibs          Condition="'%(Link.AndroidSystemLibs)'            == ''">c;m;log;gcc</AndroidSystemLibs>
-      <LinkGccLibThumb            Condition="'%(Link.LinkGccLibThumb)'              == ''">false</LinkGccLibThumb>
 
       <SoName                     Condition="'%(Link.SoName)'                       == ''">lib$(TargetName)</SoName>
       <ReportUndefinedSymbols     Condition="'%(Link.ReportUndefinedSymbols)'       == ''">true</ReportUndefinedSymbols>
 
       <GenerateSharedLibrary      Condition="'%(Link.GenerateSharedLibrary)'        == ''">true</GenerateSharedLibrary>
       <NoExecStack                Condition="'%(Link.NoExecStack)'                  == ''">true</NoExecStack>
+      <ThumbMode                  Condition="'%(Link.ThumbMode)'                    == ''">true</ThumbMode>
       <RPathLink                  Condition="'%(Link.RPathLink)'                    == ''">$(AndroidLibDir)</RPathLink>
       <SysRootDir                 Condition="'%(Link.SysRootDir)'                   == ''">$(AndroidLibDir)\..\..</SysRootDir>
       <StlLibs                    Condition="'%(Link.StlLibs)'                      == ''">$(AndroidStlLibs)</StlLibs>

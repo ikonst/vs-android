@@ -44,7 +44,7 @@
   </BoolProperty>
   <StringListProperty Name="AndroidSystemLibs" DisplayName="Android System Libraries" Category="Input" Switch="l">
   </StringListProperty>
-  <BoolProperty Name="LinkGccLibThumb" DisplayName="Link Against Thumb Version of LibGcc" Category="Input">
+  <BoolProperty Name="ThumbMode" DisplayName="Link ARM thumb code"  Description="Specifies whether to link with the 'thumb' variant of libgcc." Category="Input" Switch="mthumb">
   </BoolProperty>
 
   <!-- Advanced -->

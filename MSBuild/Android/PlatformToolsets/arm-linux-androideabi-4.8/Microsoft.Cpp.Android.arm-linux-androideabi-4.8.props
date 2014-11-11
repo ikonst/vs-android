@@ -17,11 +17,6 @@
     <!-- Path to gcc prebuilt libs -->
     <PrebuiltDir>$(AndroidNdkDir)\toolchains\$(PlatformToolsetVersion)\prebuilt\$(PrebuiltWinDirName)</PrebuiltDir>
 
-    <GccLibPath>$(PrebuiltDir)\lib\gcc\arm-linux-androideabi\4.8</GccLibPath>
-    <GccLibPath_Thumb>$(PrebuiltDir)\lib\gcc\arm-linux-androideabi\4.8\thumb</GccLibPath_Thumb>
-    <GccLibPath_Arm7>$(PrebuiltDir)\lib\gcc\arm-linux-androideabi\4.8\armv7-a</GccLibPath_Arm7>
-    <GccLibPath_Arm7_Thumb>$(PrebuiltDir)\lib\gcc\arm-linux-androideabi\4.8\armv7-a\thumb</GccLibPath_Arm7_Thumb>
-
     <!-- Path to the GCC compilation tools -->
     <GccToolsPath>$(AndroidNdkDir)\toolchains\$(PlatformToolsetVersion)\prebuilt\$(PrebuiltWinDirName)\bin</GccToolsPath>
 

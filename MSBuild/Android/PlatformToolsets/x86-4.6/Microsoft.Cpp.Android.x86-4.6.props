@@ -17,11 +17,6 @@
     <!-- Path to gcc prebuilt libs -->
     <PrebuiltDir>$(AndroidNdkDir)\toolchains\$(PlatformToolsetVersion)\prebuilt\$(PrebuiltWinDirName)</PrebuiltDir>
 
-    <GccLibPath>$(PrebuiltDir)\lib\gcc\i686-linux-android\4.6</GccLibPath>
-    <GccLibPath_Thumb>$(GccLibPath)</GccLibPath_Thumb>
-    <GccLibPath_Arm7>$(GccLibPath)</GccLibPath_Arm7>
-    <GccLibPath_Arm7_Thumb>$(GccLibPath)</GccLibPath_Arm7_Thumb>
-
     <!-- Path to the GCC compilation tools -->
     <GccToolsPath>$(AndroidNdkDir)\toolchains\$(PlatformToolsetVersion)\prebuilt\$(PrebuiltWinDirName)\bin</GccToolsPath>
 

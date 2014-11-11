@@ -37,11 +37,6 @@
     <AndroidStlLibs Condition="'$(AndroidStlType)' == 'stlport_static'">-lstdc++;-lstlport_static;-lgcc;-ldl</AndroidStlLibs>
     <AndroidStlLibs Condition="'$(AndroidStlType)' == 'stlport_dynamic'">-lstdc++;$(AndroidStlLibPath)\libstlport_shared.so;-lgcc;-ldl</AndroidStlLibs>
 
-    <GccLibPath       Condition="'$(AndroidArch)' == 'armv5te'" >$(GccLibPath)</GccLibPath>
-    <GccLibPath_Thumb Condition="'$(AndroidArch)' == 'armv5te'" >$(GccLibPath_Thumb)</GccLibPath_Thumb>
-    <GccLibPath       Condition="'$(AndroidArch)' == 'armv7-a'" >$(GccLibPath_Arm7)</GccLibPath>
-    <GccLibPath_Thumb Condition="'$(AndroidArch)' == 'armv7-a'" >$(GccLibPath_Arm7_Thumb)</GccLibPath_Thumb>
-
     <!-- Tool paths -->
     <AntBatPath>$(AntDir)\bin\ant.bat</AntBatPath>
     <AndroidAdbPath>$(AndroidSdkDir)\platform-tools\adb.exe</AndroidAdbPath>
