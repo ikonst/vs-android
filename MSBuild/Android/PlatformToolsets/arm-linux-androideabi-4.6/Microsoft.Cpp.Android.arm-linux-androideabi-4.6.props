@@ -20,9 +20,6 @@
     <!-- Path to the GCC compilation tools -->
     <GccToolsPath>$(AndroidNdkDir)\toolchains\$(PlatformToolsetVersion)\prebuilt\$(PrebuiltWinDirName)\bin</GccToolsPath>
 
-    <!-- Path to the toolchain includes. Needed for Intellisense. -->
-    <GccToolchainIncludes>$(PrebuiltDir)\lib\gcc\arm-linux-androideabi\4.6\include</GccToolchainIncludes>
-
     <!-- GCC compilation tool filenames -->
     <GccCompiler>arm-linux-androideabi-g++.exe</GccCompiler>
     <GccLinker>arm-linux-androideabi-g++.exe</GccLinker>

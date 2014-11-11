@@ -20,9 +20,6 @@
     <!-- Path to the GCC compilation tools -->
     <GccToolsPath>$(AndroidNdkDir)\toolchains\$(PlatformToolsetVersion)\prebuilt\$(PrebuiltWinDirName)\bin</GccToolsPath>
 
-    <!-- Path to the toolchain includes. Needed for Intellisense. -->
-    <GccToolchainIncludes>$(PrebuiltDir)\lib\gcc\mipsel-linux-android\4.6\include</GccToolchainIncludes>
-
     <!-- GCC compilation tool filenames -->
     <GccCompiler>mipsel-linux-android-g++.exe</GccCompiler>
     <GccLinker>mipsel-linux-android-g++.exe</GccLinker>
