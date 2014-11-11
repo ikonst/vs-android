@@ -61,7 +61,8 @@
   </StringListProperty>
   <BoolProperty Name="GenerateSharedLibrary" Category="General" Visible="false" Switch="shared">
   </BoolProperty>
-  <BoolProperty Name="NoExecStack" Category="General" Visible="false" Switch="Wl,-z,noexecstack">
+  <!-- NoExecStack is controlled in tandem for both compiling and linking by general property NoExecStack -->
+  <BoolProperty Name="NoExecStack" Category="General" Visible="false" Switch="Wl,-z,noexecstack" ReverseSwitch="Wl,-z,execstack">
   </BoolProperty>
   <StringProperty Subtype="folder" Name="RPathLink" Category="General" Visible="false" Switch="Wl,-rpath-link=">
   </StringProperty>

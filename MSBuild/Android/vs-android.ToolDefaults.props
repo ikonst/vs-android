@@ -30,6 +30,7 @@
       <SoftFloat                Condition="'%(ClCompile.SoftFloat)'                 == ''">false</SoftFloat>
       <PositionIndependentCode  Condition="'%(ClCompile.PositionIndependentCode)'   == ''">true</PositionIndependentCode>
       <StackProtector           Condition="'%(ClCompile.StackProtector)'            == ''">true</StackProtector>
+      <NoExecStack              Condition="'%(ClCompile.NoExecStack)'               == ''">$(NoExecStack)</NoExecStack>
       
       <PrecompiledHeader        Condition="'%(ClCompile.PrecompiledHeader)'         == ''">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderOutputFile Condition="'%(ClCompile.PrecompiledHeaderOutputFile)' == ''">$(IntDir)$(TargetName).pch.h</PrecompiledHeaderOutputFile>
@@ -94,7 +95,7 @@
       <ReportUndefinedSymbols     Condition="'%(Link.ReportUndefinedSymbols)'       == ''">true</ReportUndefinedSymbols>
 
       <GenerateSharedLibrary      Condition="'%(Link.GenerateSharedLibrary)'        == ''">true</GenerateSharedLibrary>
-      <NoExecStack                Condition="'%(Link.NoExecStack)'                  == ''">true</NoExecStack>
+      <NoExecStack                Condition="'%(Link.NoExecStack)'                  == ''">$(NoExecStack)</NoExecStack>
       <ThumbMode                  Condition="'%(Link.ThumbMode)'                    == ''">true</ThumbMode>
       <RelocationReadOnly         Condition="'%(Link.RelocationReadOnly)'           == ''">true</RelocationReadOnly>
       <RPathLink                  Condition="'%(Link.RPathLink)'                    == ''">$(AndroidLibDir)</RPathLink>

@@ -131,6 +131,9 @@
     <EnumValue Name="stlport_dynamic" DisplayName="STLport Dynamic">
     </EnumValue>
   </EnumProperty>
+  <!-- Equivalent to NDK variable LOCAL_DISABLE_NO_EXECUTE -->
+  <BoolProperty Name="NoExecStack" DisplayName="No Executable Stack" Category="ProjectDefaults" Description="Mark output as not requiring executable stack (&quot;NX bit&quot;). This is a security feature that is enabled by default.">
+  </BoolProperty>
 
   <!-- Hidden -->
   <EnumProperty Name="CLRSupport" DisplayName="Common Language Runtime Support"

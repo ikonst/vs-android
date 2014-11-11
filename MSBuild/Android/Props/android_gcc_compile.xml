@@ -137,6 +137,9 @@
   </EnumProperty>
   <BoolProperty Name="IgnoreVaListWarning" Category="General" Visible="false" Switch="Wno-psabi">
   </BoolProperty>
+  <!-- NoExecStack is controlled in tandem for both compiling and linking by general property NoExecStack -->
+  <BoolProperty Name="NoExecStack" Category="General" Visible="false" Switch="Wa,--noexecstack" ReverseSwitch="Wa,--execstack">
+  </BoolProperty>
 
   <!-- Command Line -->
   <StringProperty Name="AdditionalOptions" DisplayName="Additional Options" Description="Additional Options" Category="Command Line">
