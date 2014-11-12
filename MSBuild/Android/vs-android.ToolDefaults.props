@@ -52,13 +52,12 @@
          are not passed to the compiler, since the compiler is already using them.
          This is merely our way of letting Microsoft Intellisense know about them.
       -->
-      <IntellisenseIncludeDirectories>$(ToolsetIntellisenseIncludeDirectories)</IntellisenseIncludeDirectories>
+      <IntellisenseIncludeDirectories>$(IncludePath);$(ToolsetIntellisenseIncludeDirectories)</IntellisenseIncludeDirectories>
       <IntellisenseForcedIncludeFiles>$(ToolsetIntellisenseForcedIncludeFiles)</IntellisenseForcedIncludeFiles>
       <IntellisensePreprocessorDefinitions>$(ToolsetIntellisensePreprocessorDefinitions)</IntellisensePreprocessorDefinitions>
 
       <!--
-         The following definitions will actually be passed to the compiler,
-         but Intellisense should be aware of them too.
+         The following definitions will be passed *only* to the compiler.
       -->
       <ToolsetCompilerFlags>$(ToolsetCompilerFlags)</ToolsetCompilerFlags>
       <SystemIncludeDirectories>$(IncludePath)</SystemIncludeDirectories>

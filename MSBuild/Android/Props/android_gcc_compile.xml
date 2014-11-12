@@ -35,7 +35,6 @@ For the file influencing actual gcc and clang command lines, see android_gcc_com
   </Rule.DataSource>
 
   <!-- Hidden properties to influence Intellisense parsing -->
-  <StringListProperty Subtype="folder" Name="IntellisenseIncludeDirectories" Category="General" Visible="false" Switch="I" />
   <StringListProperty Subtype="file" Name="IntellisenseForcedIncludeFiles" Category="General" Visible="false" Switch="FI" />
 
   <!--
@@ -134,6 +133,6 @@ For the file influencing actual gcc and clang command lines, see android_gcc_com
   <!--
     This property must remain at the end of the file to allow users to override it.
   -->
-  <StringListProperty Subtype="folder" Name="SystemIncludeDirectories" Category="General" Visible="false" Switch="I" />
-    
+  <StringListProperty Subtype="folder" Name="IntellisenseIncludeDirectories" Category="General" Visible="false" Switch="I" />
+
 </Rule>

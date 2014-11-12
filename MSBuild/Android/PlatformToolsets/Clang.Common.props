@@ -26,9 +26,17 @@
 
   <!-- Uses ToolsetArch... properties, defined in the arch props -->
   <PropertyGroup>
+    <!--
+      This directory contains headers that are part of the compiler itself, such as <stddef.h>.
+      The compiler can find them and we don't need to provide an -I switch for them,
+      so this is just for Intellisense.
+    -->
+    <ClangIncludeDir>$(LlvmPrebuiltDir)\lib\clang\$(LlvmVersion)</ClangIncludeDir>
+
     <ToolsetCompilerFlags>-target $(LlvmTriple) -gcc-toolchain $(GccPrebuiltDir) -fpic -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes $(ToolsetCompilerFlags)</ToolsetCompilerFlags>
     <ToolsetLinkerFlags>-target $(LlvmTriple) -gcc-toolchain $(GccPrebuiltDir) -no-canonical-prefixes $(ToolsetLinkerFlags)</ToolsetLinkerFlags>
     <ToolsetIntellisenseForcedIncludeFiles>$(MSBuildThisFileDirectory)$(PlatformToolsetVersion)\clang.h</ToolsetIntellisenseForcedIncludeFiles>
+    <ToolsetIntellisenseIncludeDirectories>$(ClangIncludeDir)\include</ToolsetIntellisenseIncludeDirectories>
   </PropertyGroup>
 
 </Project>

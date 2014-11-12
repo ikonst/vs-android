@@ -25,9 +25,17 @@
 
   <!-- Uses ToolsetArch... properties, defined in the arch props -->
   <PropertyGroup>
+    <!--
+      This directory contains headers that are part of the compiler itself, such as <stddef.h>.
+      The compiler can find them and we don't need to provide an -I switch for them,
+      so this is just for Intellisense.
+    -->
+    <GccIncludeDir>$(PrebuiltDir)\lib\gcc\$(PlatformTriplet)\$(GccVersion)</GccIncludeDir>
+
     <ToolsetCompilerFlags>-no-canonical-prefixes -ffunction-sections -funwind-tables $(ToolsetCompilerFlags)</ToolsetCompilerFlags>
     <ToolsetLinkerFlags>-no-canonical-prefixes $(ToolsetLinkerFlags)</ToolsetLinkerFlags>
     <ToolsetIntellisenseForcedIncludeFiles>$(MSBuildThisFileDirectory)$(PlatformToolsetVersion)\gcc.h</ToolsetIntellisenseForcedIncludeFiles>
+    <ToolsetIntellisenseIncludeDirectories>$(GccIncludeDir)\include;$(GccIncludeDir)\include-fixed</ToolsetIntellisenseIncludeDirectories>
   </PropertyGroup>
 
 </Project>
