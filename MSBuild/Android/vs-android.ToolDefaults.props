@@ -17,6 +17,8 @@
       <PreprocessorDefinitions  Condition="'%(ClCompile.PreprocessorDefinitions)'   == ''"></PreprocessorDefinitions>
       <Warnings                 Condition="'%(ClCompile.Warnings)'                  == ''">NormalWarnings</Warnings>
       <WarningsAsErrors         Condition="'%(ClCompile.WarningsAsErrors)'          == ''">false</WarningsAsErrors>
+      <FormatWarnings           Condition="'%(ClCompile.FormatWarnings)'            == ''">Warning</FormatWarnings>
+      <FormatSecurityWarnings   Condition="'%(ClCompile.FormatSecurityWarnings)'    == ''">Error</FormatSecurityWarnings>
       <EchoCommandLines         Condition="'%(ClCompile.EchoCommandLines)'          == ''">false</EchoCommandLines>
 
       <ThumbMode                Condition="'%(ClCompile.ThumbMode)'                 == ''">false</ThumbMode>
