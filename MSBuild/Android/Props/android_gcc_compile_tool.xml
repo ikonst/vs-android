@@ -99,8 +99,12 @@ For the file used in Visual Studio UI and Intellisense, see android_gcc_compile.
   <!-- Command Line -->
   <StringProperty Name="AdditionalOptions" />
 
-  <!-- Switches from the properties -->
+  <!--
+    These properties are assigned in vs-android.ToolDefaults.props.
+    They must remain at the end of the file to allow users to override them.
+  -->
   <StringProperty Name="ToolsetCompilerFlags" />
+  <StringListProperty Subtype="folder" Name="SystemIncludeDirectories" Switch="I" />
   <StringListProperty Name="ToolsetPreprocessorDefinitions" Switch="D" />
 
 </Rule>

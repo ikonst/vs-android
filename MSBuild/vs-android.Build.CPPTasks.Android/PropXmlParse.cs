@@ -68,7 +68,15 @@ namespace vs_android.Build.CPPTasks.Android
 		{
 			StringBuilder returnStr = new StringBuilder(Utils.EST_MAX_CMDLINE_LEN);
 
-			foreach ( string metaName in taskItem.MetadataNames )
+			// Produce a list of property names that appear in both the property XML file
+			// and in the item's metadata, while *keeping the order of the XML properties*.
+			//
+			// This is essential for cases when properties were ordered in the XML
+			// in a particular way on purpose.
+			IEnumerable<string> propertyNames =
+				m_properties.Keys.Intersect(taskItem.MetadataNames.OfType<string>());
+
+			foreach ( string metaName in propertyNames )
 			{
 				string propValue = taskItem.GetMetadata(metaName);
 				string processed = ProcessProperty(metaName, propValue).Trim();

@@ -54,11 +54,13 @@
       <IntellisenseForcedIncludeFiles>$(ToolsetIntellisenseForcedIncludeFiles)</IntellisenseForcedIncludeFiles>
       <IntellisensePreprocessorDefinitions>$(ToolsetIntellisensePreprocessorDefinitions)</IntellisensePreprocessorDefinitions>
 
-      <ToolsetCompilerFlags>$(ToolsetCompilerFlags)</ToolsetCompilerFlags>
       <!--
-         These preprocessor definitions will actually be passed to the compiler,
+         The following definitions will actually be passed to the compiler,
          but Intellisense should be aware of them too.
-
+      -->
+      <ToolsetCompilerFlags>$(ToolsetCompilerFlags)</ToolsetCompilerFlags>
+      <SystemIncludeDirectories>$(IncludePath)</SystemIncludeDirectories>
+      <!--
          ANDROID is listed here since it's defined in ndk/build/core/build-binary.mk.
          __ANDROID___ is not listed here since it's baked into the compilers.
       -->

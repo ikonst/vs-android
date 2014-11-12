@@ -122,5 +122,10 @@ For the file influencing actual gcc and clang command lines, see android_gcc_com
 
   <!-- Command Line -->
   <StringProperty Name="AdditionalOptions" DisplayName="Additional Options" Description="Additional Options" Category="Command Line" />
+
+  <!--
+    This property must remain at the end of the file to allow users to override it.
+  -->
+  <StringListProperty Subtype="folder" Name="SystemIncludeDirectories" Category="General" Visible="false" Switch="I" />
     
 </Rule>
