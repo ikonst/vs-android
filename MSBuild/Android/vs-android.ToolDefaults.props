@@ -23,7 +23,7 @@
       <Neon                     Condition="'%(ClCompile.Neon)'                      == ''">false</Neon>
       <StrictAliasing           Condition="'%(ClCompile.StrictAliasing)'            == ''">false</StrictAliasing>
       <UnswitchLoops            Condition="'%(ClCompile.UnswitchLoops)'             == ''">true</UnswitchLoops>
-      <InlineLimit              Condition="'%(ClCompile.InlineLimit)'               == ''">100</InlineLimit>
+      <InlineLimit              Condition="'%(ClCompile.InlineLimit)'               == ''"></InlineLimit>
       <OmitFramePointer         Condition="'%(ClCompile.OmitFramePointer)'          == ''">true</OmitFramePointer>
 
       <GccExceptionHandling     Condition="'%(ClCompile.GccExceptionHandling)'      == ''">false</GccExceptionHandling>
@@ -54,6 +54,7 @@
       <IntellisenseForcedIncludeFiles>$(ToolsetIntellisenseForcedIncludeFiles)</IntellisenseForcedIncludeFiles>
       <IntellisensePreprocessorDefinitions>$(ToolsetIntellisensePreprocessorDefinitions)</IntellisensePreprocessorDefinitions>
 
+      <ToolsetCompilerFlags>$(ToolsetCompilerFlags)</ToolsetCompilerFlags>
       <!--
          These preprocessor definitions will actually be passed to the compiler,
          but Intellisense should be aware of them too.

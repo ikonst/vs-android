@@ -8,7 +8,7 @@ This file is android_gcc_compile_tool.xml:
 
   Parsed *only* by PropXmlParse.cs.
   Does not influence the Visual Studio UI.
-  Can be stripped of any UI attributes such as DisplayName and Description.
+  Can be stripped of any UI attributes such as DisplayName, Category and Description.
   Specifies the command line switches (i.e. flags) for the gcc and clang families of compilers.
 
 For the file used in Visual Studio UI and Intellisense, see android_gcc_compile.xml.
@@ -98,5 +98,9 @@ For the file used in Visual Studio UI and Intellisense, see android_gcc_compile.
 
   <!-- Command Line -->
   <StringProperty Name="AdditionalOptions" />
+
+  <!-- Switches from the properties -->
+  <StringProperty Name="ToolsetCompilerFlags" />
+  <StringListProperty Name="ToolsetPreprocessorDefinitions" Switch="D" />
 
 </Rule>

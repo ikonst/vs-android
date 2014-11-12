@@ -43,7 +43,7 @@
     <JavaCompilerPath>$(JavaHomeDir)\bin\javac.exe</JavaCompilerPath>
 
     <!-- Default system pathing -->
-    <ExecutablePath Condition="'$(ExecutablePath)' == ''">$(GccToolsPath);$(PATH);</ExecutablePath>
+    <ExecutablePath Condition="'$(ExecutablePath)' == ''">$(ToolPaths);$(PATH);</ExecutablePath>
     <IncludePath Condition="'$(IncludePath)' == ''">$(AndroidIncludeDir);$(AndroidStlIncludeDir);</IncludePath>
     <LibraryPath Condition="'$(LibraryPath)' == ''">$(AndroidLibDir);$(AndroidStlLibPath);</LibraryPath>
 

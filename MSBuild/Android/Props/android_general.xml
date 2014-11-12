@@ -78,12 +78,13 @@
   </StringProperty>
 
   <EnumProperty Name="PlatformToolset" DisplayName="Platform Toolset" Category="General">
-    <EnumValue Name="arm-linux-androideabi-4.6" DisplayName="ARM 4.6 Toolchain (arm-linux-androideabi-4.6)" />
-    <EnumValue Name="arm-linux-androideabi-4.8" DisplayName="ARM 4.8 Toolchain (arm-linux-androideabi-4.8)" />
-    <EnumValue Name="x86-4.6" DisplayName="x86 4.6 Toolchain (x86-4.6)" />
-    <EnumValue Name="x86-4.8" DisplayName="x86 4.8 Toolchain (x86-4.8)" />
-    <EnumValue Name="mipsel-linux-android-4.6" DisplayName="MIPS 4.6 Toolchain (mipsel-linux-android-4.6)" />
-    <EnumValue Name="mipsel-linux-android-4.8" DisplayName="MIPS 4.8 Toolchain (mipsel-linux-android-4.8)" />
+    <EnumValue Name="arm-linux-androideabi-4.6" DisplayName="ARM gcc 4.6 Toolchain (arm-linux-androideabi-4.6)" />
+    <EnumValue Name="arm-linux-androideabi-4.8" DisplayName="ARM gcc 4.8 Toolchain (arm-linux-androideabi-4.8)" />
+    <EnumValue Name="arm-linux-androideabi-clang3.4" DisplayName="ARM clang 3.4 Toolchain (arm-linux-androideabi-clang3.4)" />
+    <EnumValue Name="x86-4.6" DisplayName="x86 gcc 4.6 Toolchain (x86-4.6)" />
+    <EnumValue Name="x86-4.8" DisplayName="x86 gcc 4.8 Toolchain (x86-4.8)" />
+    <EnumValue Name="mipsel-linux-android-4.6" DisplayName="MIPS gcc 4.6 Toolchain (mipsel-linux-android-4.6)" />
+    <EnumValue Name="mipsel-linux-android-4.8" DisplayName="MIPS gcc 4.8 Toolchain (mipsel-linux-android-4.8)" />
   </EnumProperty>
 
   <!-- Project Defaults -->

@@ -12,7 +12,7 @@
     <PrebuiltDir>$(AndroidNdkDir)\toolchains\$(PlatformToolsetVersion)\prebuilt\$(PrebuiltWinDirName)</PrebuiltDir>
 
     <!-- Path to the GCC compilation tools -->
-    <GccToolsPath>$(PrebuiltDir)\bin</GccToolsPath>
+    <ToolPaths>$(PrebuiltDir)\bin</ToolPaths>
 
     <!-- GCC compilation tool filenames -->
     <GccCompiler>$(PlatformTriplet)-g++.exe</GccCompiler>

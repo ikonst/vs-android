@@ -477,15 +477,10 @@
            Text="Unknown version of Visual Studio: $(VisualStudioVersion)" ></Error>
 
     <!-- Android NDK Checks -->
-    <Error Condition="exists('$(AndroidNdkDir)\prebuilt\android-arm64\gdbserver\gdbserver') and !exists('$(GccToolsPath)\$(GccCompiler)')"
-           Text="$(NDK64Warning)"></Error>
     <Error Condition="!exists('$(AndroidNdkDir)')"
            Text="$(NDKMissing)$(CRLF)$(NDKDownload)"></Error>
-    <Error Condition="!exists('$(GccToolsPath)\$(GccCompiler)')"
-           Text="$(NDKMissing)$(CRLF)$(NDKDownload)$(CRLF)$(NDKMissingToolchain)"></Error>
-    <Error Condition="!exists('$(GccToolsPath)\$(GccLibrarian)')"
-           Text="$(NDKMissing)$(CRLF)$(NDKDownload)$(CRLF)$(NDKMissingToolchain)"></Error>
-    <Error Condition="!exists('$(GccToolsPath)\$(GccLinker)')"
+
+    <Error Condition="!exists('$(AndroidNdkDir)\toolchains\$(PlatformToolsetVersion)')"
            Text="$(NDKMissing)$(CRLF)$(NDKDownload)$(CRLF)$(NDKMissingToolchain)"></Error>
 
     <!-- x86 vs arm Checks -->

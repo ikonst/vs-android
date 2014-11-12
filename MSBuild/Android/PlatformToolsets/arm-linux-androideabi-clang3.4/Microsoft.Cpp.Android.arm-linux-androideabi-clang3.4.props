@@ -1,0 +1,22 @@
+﻿<!--
+***********************************************************************************************
+(c) 2012 Gavin Pugh http://www.gavpugh.com/ - Released under the open-source zlib license
+***********************************************************************************************
+-->
+
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+
+    <LlvmVersion>3.4</LlvmVersion>
+    <GccVersion>4.8</GccVersion> <!-- should be 4.9 on NDK r10 -->
+    <PlatformShortName>arm</PlatformShortName>
+    <PlatformTriplet>arm-linux-androideabi</PlatformTriplet>
+    <PlatformToolsetVersion>$(PlatformTriplet)-clang$(LlvmVersion)</PlatformToolsetVersion>
+    <GccToolsetVersion>$(PlatformTriplet)-$(GccVersion)</GccToolsetVersion>
+
+  </PropertyGroup>
+
+  <Import Project="..\Clang.Common.props"/>
+
+</Project>
