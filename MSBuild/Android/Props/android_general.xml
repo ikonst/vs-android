@@ -118,19 +118,15 @@
     <EnumValue Name="x86" DisplayName="x86 Architecture (x86)" />
     <EnumValue Name="mips" DisplayName="MIPS Architecture (mips)" />
   </EnumProperty>
-  <EnumProperty Name="AndroidStlType" DisplayName="STL Type" Category="ProjectDefaults">
-    <EnumValue Name="none" DisplayName="No C++ Support">
-    </EnumValue>
-    <EnumValue Name="system" DisplayName="Minimal C++ without STL">
-    </EnumValue>
-    <EnumValue Name="gnustl_static" DisplayName="GNU libstdc++ Static">
-    </EnumValue>
-    <EnumValue Name="gnustl_dynamic" DisplayName="GNU libstdc++ Dynamic">
-    </EnumValue>
-    <EnumValue Name="stlport_static" DisplayName="STLport Static">
-    </EnumValue>
-    <EnumValue Name="stlport_dynamic" DisplayName="STLport Dynamic">
-    </EnumValue>
+  <EnumProperty Name="AndroidStlType" DisplayName="C++ Standard Library" Category="ProjectDefaults">
+    <EnumValue Name="none" DisplayName="No C++ Support"/>
+    <EnumValue Name="system" DisplayName="Minimal C++ without STL"/>
+    <EnumValue Name="gnustl_static" DisplayName="GNU libstdc++ Static"/>
+    <EnumValue Name="gnustl_dynamic" DisplayName="GNU libstdc++ Dynamic"/>
+    <EnumValue Name="c++_static" DisplayName="LLVM libc++ Static"/>
+    <EnumValue Name="c++_dynamic" DisplayName="LLVM libc++ Dynamic"/>
+    <EnumValue Name="stlport_static" DisplayName="STLport Static"/>
+    <EnumValue Name="stlport_dynamic" DisplayName="STLport Dynamic"/>
   </EnumProperty>
   <!-- Equivalent to NDK variable LOCAL_DISABLE_NO_EXECUTE -->
   <BoolProperty Name="NoExecStack" DisplayName="No Executable Stack" Category="ProjectDefaults" Description="Mark output as not requiring executable stack (&quot;NX bit&quot;). This is a security feature that is enabled by default.">
