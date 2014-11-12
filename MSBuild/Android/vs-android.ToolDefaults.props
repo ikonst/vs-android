@@ -113,6 +113,8 @@
 
       <SoName                     Condition="'%(Link.SoName)'                       == ''">lib$(TargetName)</SoName>
       <ReportUndefinedSymbols     Condition="'%(Link.ReportUndefinedSymbols)'       == ''">true</ReportUndefinedSymbols>
+      <NoWcharSizeWarning         Condition="'%(Link.NoWcharSizeWarning)'           == ''">false</NoWcharSizeWarning>
+      <NoEnumSizeWarning          Condition="'%(Link.NoEnumSizeWarning)'            == ''">false</NoEnumSizeWarning>
 
       <GenerateSharedLibrary      Condition="'%(Link.GenerateSharedLibrary)'        == ''">true</GenerateSharedLibrary>
       <NoExecStack                Condition="'%(Link.NoExecStack)'                  == ''">$(NoExecStack)</NoExecStack>

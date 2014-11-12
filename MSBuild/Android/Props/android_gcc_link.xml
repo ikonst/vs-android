@@ -55,6 +55,10 @@
   <!-- Equivalent to NDK variable LOCAL_DISABLE_RELRO -->
   <BoolProperty Name="RelocationReadOnly" Category="Advanced" Switch="Wl,-z,relro -Wl,-z,now" ReverseSwitch="Wl,-z,norelro -Wl,-z,lazy" Description="NDK compiled code is built with read-only relocations and GOT protection. This instructs the runtime linker to mark certain regions of memory as being read-only after relocation, making certain security exploits (such as GOT overwrites) harder to perform.">
   </BoolProperty>
+  <BoolProperty Name="NoWcharSizeWarning" DisplayName="Suppress wchar_t Size Warning (ARM only)" Category="Advanced" Switch="Wl,--no-wchar-size-warning" Description="Prevents the linker from warning when linking object files that specify incompatible EABI wchar_t size attributes. For example, with this switch enabled, linking of an object file using 32-bit wchar_t values with another using 16-bit wchar_t values will not be diagnosed.">
+  </BoolProperty>
+  <BoolProperty Name="NoEnumSizeWarning" DisplayName="Suppress enum Size Warning (ARM only)" Category="Advanced" Switch="Wl,--no-enum-size-warning" Description="Prevents the linker from warning when linking object files that specify incompatible EABI enumeration size attributes. For example, with this switch enabled, linking of an object file using 32-bit enumeration values with another using enumeration values fitted into the smallest possible space will not be diagnosed.">
+  </BoolProperty>
 
   <!-- Hidden -->
   <StringListProperty Subtype="folder" Name="SystemLibraryDirectories" Category="General" Visible="false" Switch="L">
