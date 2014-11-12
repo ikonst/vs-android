@@ -91,12 +91,12 @@ For the file influencing actual gcc and clang command lines, see android_gcc_com
   <StringListProperty Name="PreprocessorDefinitions" DisplayName="Preprocessor Definitions" Category="Preprocessor" Switch="D" />
 
   <!-- Code Generation -->
-  <BoolProperty Name="GccExceptionHandling" DisplayName="Enable C++ Exceptions" Category="Code Generation" Switch="D __VA_EXCEPTIONS" ReverseSwitch="D __VA_NO_EXCEPTIONS" />
-  <BoolProperty Name="PositionIndependentCode" DisplayName="Generate Position-Independent Code" Category="Code Generation" Switch="D __VA_PIC" ReverseSwitch="D __VA_NO_PIC" />
+  <BoolProperty Name="GccExceptionHandling" DisplayName="Enable C++ Exceptions" Category="Code Generation" Switch="D __VA_EXCEPTIONS=1" ReverseSwitch="D __VA_EXCEPTIONS=0" />
+  <BoolProperty Name="PositionIndependentCode" DisplayName="Generate Position-Independent Code" Category="Code Generation" Switch="D __VA_PIC=1" ReverseSwitch="D __VA_PIC=" />
   <BoolProperty Name="StackProtector" DisplayName="Stack Protection" Category="Code Generation" />
 
   <!-- Language -->
-  <BoolProperty Name="RuntimeTypeInfo" DisplayName="Enable Run-Time Type Information" Category="Language" Switch="D __VA_RTTI" ReverseSwitch="D __VA_NO_RTTI" />
+  <BoolProperty Name="RuntimeTypeInfo" DisplayName="Enable Run-Time Type Information" Category="Language" Switch="D __VA_RTTI=1" ReverseSwitch="D __VA_RTTI=0" />
   <BoolProperty Name="ShortEnums" DisplayName="Short Enums" Category="Language" Switch="D __VA_SHORT_ENUMS" />
   <BoolProperty Name="ShortWChar" DisplayName="Short wchar_t" Category="Language" Description="Override the underlying type for ‘wchar_t’ to be ‘short unsigned int’ instead of the default for the target." Switch="D __VA_SHORT_WCHAR" />
 

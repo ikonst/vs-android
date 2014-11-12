@@ -7,21 +7,18 @@
 #ifdef ___cplusplus
 	#define _GNU_SOURCE 1
 	#define __DEPRECATED 1
-	#ifndef __VA_NO_EXCEPTIONS
-		#define __EXCEPTIONS 1
-	#endif
 	#define __GNUG__ 4
-	#ifndef __VA_NO_RTTI
+	#if __VA_RTTI
 		#define __GXX_RTTI 1
 	#endif
 	#define __GXX_WEAK__ 1
 	#define __WCHAR_UNSIGNED__ 1
 	#undef __cplusplus
 	#define __cplusplus 199711L
-#else
-	#ifdef __VA_EXCEPTIONS
-		#define __EXCEPTIONS 1	
-	#endif
+#endif
+
+#if __VA_EXCEPTIONS
+	#define __EXCEPTIONS 1
 #endif
 
 #ifdef __VA_ARM5
@@ -70,7 +67,7 @@
 	#define __THUMBEL__ 1
 #endif
 
-#ifndef __VA_NO_PIC
+#if __VA_PIC
 	#define __PIC__ 1
 	#define __pic__ 1
 #endif
