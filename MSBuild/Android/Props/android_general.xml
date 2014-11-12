@@ -113,10 +113,11 @@
     <EnumValue Name="android-19" DisplayName="Android 4.4 (android-19)" />
   </EnumProperty>
   <EnumProperty Name="AndroidArch" DisplayName="Target Architecture" Category="ProjectDefaults">
-    <EnumValue Name="armv5te" DisplayName="ARM Architecture v5te (armv5te)" />
-    <EnumValue Name="armv7-a" DisplayName="ARM Architecture v7-a (armv7-a)" />
-    <EnumValue Name="x86" DisplayName="x86 Architecture (x86)" />
-    <EnumValue Name="mips" DisplayName="MIPS Architecture (mips)" />
+    <EnumValue Name="armv5te" DisplayName="ARM v5TE (armv5te)" />
+    <EnumValue Name="armv7-a" DisplayName="ARM v7-A (armv7-a)" />
+    <EnumValue Name="armv7-a-hard" DisplayName="ARM v7-A with hard-float ABI  (armv7-a-hard)" />
+    <EnumValue Name="x86" DisplayName="x86 (x86)" />
+    <EnumValue Name="mips" DisplayName="MIPS (mips)" />
   </EnumProperty>
   <EnumProperty Name="AndroidStlType" DisplayName="C++ Standard Library" Category="ProjectDefaults">
     <EnumValue Name="none" DisplayName="No C++ Support"/>
