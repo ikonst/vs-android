@@ -37,9 +37,17 @@ For the file influencing actual gcc and clang command lines, see android_gcc_com
   <!-- Hidden properties to influence Intellisense parsing -->
   <StringListProperty Subtype="folder" Name="IntellisenseIncludeDirectories" Category="General" Visible="false" Switch="I" />
   <StringListProperty Subtype="file" Name="IntellisenseForcedIncludeFiles" Category="General" Visible="false" Switch="FI" />
+
+  <!--
+    This property affects *only* Intellisense parsing. It is *not* passed to the compiler.
+    It must remain in the beginning of this file to allow the user to override it.
+  -->
   <StringListProperty Name="IntellisensePreprocessorDefinitions" Category="General" Visible="false" Switch="D" />
 
-  <!-- Hidden propertiies to influence Intellisense parsing -->
+  <!--
+    This property affects Intellisense parsing, however it is also passed to the compiler (see android_gcc_compile_tool.xml).
+    It must remain in the beginning of this file to allow the user to override it.
+  -->
   <StringListProperty Name="ToolsetPreprocessorDefinitions" Category="General" Visible="false" Switch="D" />
 
   <!-- General -->

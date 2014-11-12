@@ -19,6 +19,14 @@ For the file used in Visual Studio UI and Intellisense, see android_gcc_compile.
 
 <Rule Name="CL" PageTemplate="tool" SwitchPrefix="-" Order="10" xmlns="http://schemas.microsoft.com/build/2009/properties" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
+  <!--
+    Predefined macros are assigned in vs-android.ToolDefaults.props.
+
+    This property must remain at the beginning of this file
+    to allow users to override the -D and -U switches.
+  -->
+  <StringListProperty Name="ToolsetPreprocessorDefinitions" Switch="D" />
+
   <!-- General -->
   <StringListProperty Subtype="folder" Name="AdditionalIncludeDirectories" Switch="I" />
   <StringListProperty Subtype="folder" Name="AdditionalUserIncludeDirectories" Switch="iquote" />
@@ -105,6 +113,5 @@ For the file used in Visual Studio UI and Intellisense, see android_gcc_compile.
   -->
   <StringProperty Name="ToolsetCompilerFlags" />
   <StringListProperty Subtype="folder" Name="SystemIncludeDirectories" Switch="I" />
-  <StringListProperty Name="ToolsetPreprocessorDefinitions" Switch="D" />
 
 </Rule>
