@@ -43,8 +43,25 @@
 
       <IgnoreVaListWarning      Condition="'%(ClCompile.IgnoreVaListWarning)'       == ''">true</IgnoreVaListWarning>
 
-      <SystemIncludeDirectories Condition="'%(ClCompile.SystemIncludeDirectories)'  == ''">$(IncludePath)</SystemIncludeDirectories>
-      <SystemPreprocessorDefinitions Condition="'%(ClCompile.SystemPreprocessorDefinitions)' == ''">$(AndroidDefines)</SystemPreprocessorDefinitions>
+      <!--
+         Simulate command line arguments for Intellisense
+
+         These include directories, forced include files and preprocessor definitions
+         are not passed to the compiler, since the compiler is already using them.
+         This is merely our way of letting Microsoft Intellisense know about them.
+      -->
+      <IntellisenseIncludeDirectories>$(ToolsetIntellisenseIncludeDirectories)</IntellisenseIncludeDirectories>
+      <IntellisenseForcedIncludeFiles>$(ToolsetIntellisenseForcedIncludeFiles)</IntellisenseForcedIncludeFiles>
+      <IntellisensePreprocessorDefinitions>$(ToolsetIntellisensePreprocessorDefinitions)</IntellisensePreprocessorDefinitions>
+
+      <!--
+         These preprocessor definitions will actually be passed to the compiler,
+         but Intellisense should be aware of them too.
+
+         ANDROID is listed here since it's defined in ndk/build/core/build-binary.mk.
+         __ANDROID___ is not listed here since it's baked into the compilers.
+      -->
+      <ToolsetPreprocessorDefinitions>ANDROID;$(ToolsetPreprocessorDefinitions)</ToolsetPreprocessorDefinitions>
 
     </ClCompile>
   </ItemDefinitionGroup>

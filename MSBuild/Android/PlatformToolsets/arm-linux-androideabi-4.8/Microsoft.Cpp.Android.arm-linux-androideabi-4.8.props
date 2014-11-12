@@ -9,22 +9,12 @@
   <PropertyGroup>
 
     <PlatformToolsetVersion>arm-linux-androideabi-4.8</PlatformToolsetVersion>
-
     <PlatformShortName>arm</PlatformShortName>
-
+    <PlatformTriplet>arm-linux-androideabi</PlatformTriplet>
     <GccVersion>4.8</GccVersion>
 
-    <!-- Path to gcc prebuilt libs -->
-    <PrebuiltDir>$(AndroidNdkDir)\toolchains\$(PlatformToolsetVersion)\prebuilt\$(PrebuiltWinDirName)</PrebuiltDir>
-
-    <!-- Path to the GCC compilation tools -->
-    <GccToolsPath>$(PrebuiltDir)\bin</GccToolsPath>
-
-    <!-- GCC compilation tool filenames -->
-    <GccCompiler>arm-linux-androideabi-g++.exe</GccCompiler>
-    <GccLinker>arm-linux-androideabi-g++.exe</GccLinker>
-    <GccLibrarian>arm-linux-androideabi-ar.exe</GccLibrarian>
-
   </PropertyGroup>
+
+  <Import Project="..\Gcc.Common.props"/>
 
 </Project>

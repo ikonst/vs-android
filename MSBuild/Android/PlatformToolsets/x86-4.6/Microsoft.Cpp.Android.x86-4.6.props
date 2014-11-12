@@ -9,22 +9,12 @@
   <PropertyGroup>
 
     <PlatformToolsetVersion>x86-4.6</PlatformToolsetVersion>
-
     <PlatformShortName>x86</PlatformShortName>
-
+    <PlatformTriplet>i686-linux-android</PlatformTriplet>
     <GccVersion>4.6</GccVersion>
 
-    <!-- Path to gcc prebuilt libs -->
-    <PrebuiltDir>$(AndroidNdkDir)\toolchains\$(PlatformToolsetVersion)\prebuilt\$(PrebuiltWinDirName)</PrebuiltDir>
-
-    <!-- Path to the GCC compilation tools -->
-    <GccToolsPath>$(PrebuiltDir)\bin</GccToolsPath>
-
-    <!-- GCC compilation tool filenames -->
-    <GccCompiler>i686-linux-android-g++.exe</GccCompiler>
-    <GccLinker>i686-linux-android-g++.exe</GccLinker>
-    <GccLibrarian>i686-linux-android-ar.exe</GccLibrarian>
-
   </PropertyGroup>
+
+  <Import Project="..\Gcc.Common.props"/>
 
 </Project>

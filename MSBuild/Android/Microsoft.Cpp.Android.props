@@ -49,16 +49,6 @@
   <!-- Bring in correct tool paths -->
   <Import Project="$(VCTargetsPath)\Platforms\Android\vs-android.ToolPaths.props" />
 
-  <!-- Default preprocessor defines -->
-  <PropertyGroup>
-    <!-- ndk-build seems to use just the v5 defines for v7. Google though has some people using the _7 and _7A defines... So trying that. -->
-    <ArchDefines Condition="'$(AndroidArch)' == 'armv5te'">__ARM_EABI__;__ARM_ARCH_5__;__ARM_ARCH_5T__;__ARM_ARCH_5E__;__ARM_ARCH_5TE__;</ArchDefines>
-    <ArchDefines Condition="'$(AndroidArch)' == 'armv7-a'">__ARM_EABI__;__ARM_ARCH_7__;__ARM_ARCH_7A__;__ARM_ARCH_5__;__ARM_ARCH_5T__;__ARM_ARCH_5E__;__ARM_ARCH_5TE__;</ArchDefines>
-    <ArchDefines Condition="'$(AndroidArch)' == 'x86'">;</ArchDefines>
-
-    <AndroidDefines>ANDROID_NDK;ANDROID;__ANDROID__;$(ArchDefines);</AndroidDefines>
-  </PropertyGroup>
-
   <!-- Couple of things to disable that we don't need for Android -->
   <PropertyGroup>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>

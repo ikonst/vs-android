@@ -1,0 +1,35 @@
+﻿<!--
+***********************************************************************************************
+(c) 2012 Gavin Pugh http://www.gavpugh.com/ - Released under the open-source zlib license
+***********************************************************************************************
+-->
+
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- armv5te -->
+  <PropertyGroup Condition="'$(AndroidArch)' == 'armv5te'">
+    <ToolsetCompilerFlags>-march=armv5te -mtune=xscale -msoft-float</ToolsetCompilerFlags>
+    <ToolsetIntellisensePreprocessorDefinitions>__VA_ARM5</ToolsetIntellisensePreprocessorDefinitions>
+  </PropertyGroup>
+
+  <!-- armv7-a or armv7-a-hard -->
+  <PropertyGroup Condition="'$(AndroidArch)' == 'armv7-a' or '$(AndroidArch)' == 'armv7-a-hard'">
+    <ToolsetCompilerFlags>-march=armv7-a -mfpu=vfpv3-d16</ToolsetCompilerFlags>
+    <ToolsetLinkerFlags>-march=armv7-a -Wl,--fix-cortex-a8</ToolsetLinkerFlags>
+    <ToolsetIntellisensePreprocessorDefinitions>__VA_ARM7</ToolsetIntellisensePreprocessorDefinitions>
+  </PropertyGroup>
+
+  <!-- armv7-a only -->
+  <PropertyGroup Condition="'$(AndroidArch)' == 'armv7-a'">
+    <ToolsetCompilerFlags>$(ToolsetCompilerFlags) -mfloat-abi=softfp</ToolsetCompilerFlags>
+  </PropertyGroup>
+
+ <!-- armv7-a-hard only -->
+  <PropertyGroup Condition="'$(AndroidArch)' == 'armv7-a-hard'">
+    <ToolsetCompilerFlags>$(ToolsetCompilerFlags) -mhard-float</ToolsetCompilerFlags>
+    <ToolsetPreprocessorDefinitions>_NDK_MATH_NO_SOFTFP=1</ToolsetPreprocessorDefinitions>
+    <ToolsetLinkerFlags>$(ToolsetLinkerFlags) -Wl,--no-warn-mismatch -lm_hard</ToolsetLinkerFlags>
+    <ToolsetIntellisensePreprocessorDefinitions>__VA_ARM7_HARD_FLOAT</ToolsetIntellisensePreprocessorDefinitions>    
+  </PropertyGroup>
+
+</Project>

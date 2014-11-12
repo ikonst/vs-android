@@ -9,22 +9,12 @@
   <PropertyGroup>
 
     <PlatformToolsetVersion>mipsel-linux-android-4.8</PlatformToolsetVersion>
-
     <PlatformShortName>mips</PlatformShortName>
-
+    <PlatformTriplet>mipsel-linux-android</PlatformTriplet>
     <GccVersion>4.8</GccVersion>
 
-    <!-- Path to gcc prebuilt libs -->
-    <PrebuiltDir>$(AndroidNdkDir)\toolchains\$(PlatformToolsetVersion)\prebuilt\$(PrebuiltWinDirName)</PrebuiltDir>
-
-    <!-- Path to the GCC compilation tools -->
-    <GccToolsPath>$(PrebuiltDir)\bin</GccToolsPath>
-
-    <!-- GCC compilation tool filenames -->
-    <GccCompiler>mipsel-linux-android-g++.exe</GccCompiler>
-    <GccLinker>mipsel-linux-android-g++.exe</GccLinker>
-    <GccLibrarian>mipsel-linux-android-ar.exe</GccLibrarian>
-
   </PropertyGroup>
+
+  <Import Project="..\Gcc.Common.props"/>
 
 </Project>

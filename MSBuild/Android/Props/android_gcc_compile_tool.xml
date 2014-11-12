@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+***********************************************************************************************
+(c) 2012 Gavin Pugh http://www.gavpugh.com/ - Released under the open-source zlib license
+***********************************************************************************************
+
+This file is android_gcc_compile_tool.xml:
+
+  Parsed *only* by PropXmlParse.cs.
+  Does not influence the Visual Studio UI.
+  Can be stripped of any UI attributes such as DisplayName and Description.
+  Specifies the command line switches (i.e. flags) for the gcc and clang families of compilers.
+
+For the file used in Visual Studio UI and Intellisense, see android_gcc_compile.xml.
+
+-->
+
+<!-- Based on script: MSBuild\Microsoft.Cpp\v4.0\1033\cl.xml -->
+
+<Rule Name="CL" PageTemplate="tool" SwitchPrefix="-" Order="10" xmlns="http://schemas.microsoft.com/build/2009/properties" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+  <!-- General -->
+  <StringListProperty Subtype="folder" Name="AdditionalIncludeDirectories" Switch="I" />
+  <StringListProperty Subtype="folder" Name="AdditionalUserIncludeDirectories" Switch="iquote" />
+  <BoolProperty Name="GenerateDebugInformation" Switch="g" />
+  <EnumProperty Name="Warnings">
+    <EnumValue Name="DisableAllWarnings" Switch="w" />
+    <EnumValue Name="NormalWarnings" />
+    <EnumValue Name="AllWarnings" Switch="Wall" />
+  </EnumProperty>
+  <BoolProperty Name="WarningsAsErrors" Switch="Werror" />
+  <EnumProperty Name="FormatWarnings">
+    <EnumValue Name="Disable" Switch="Wno-format" />
+    <EnumValue Name="Warning" Switch="Wformat -Wno-error=format" />
+    <EnumValue Name="Error" Switch="Werror=format" />
+  </EnumProperty>
+  <EnumProperty Name="FormatSecurityWarnings">
+    <EnumValue Name="Disable" Switch="Wno-format-security" />
+    <EnumValue Name="Warning" Switch="Wformat -Wformat-security" />
+    <EnumValue Name="Error" Switch="Wformat -Werror=format-security" />
+  </EnumProperty>
+  <BoolProperty Name="EchoCommandLines" />
+
+  <!-- Optimization -->
+  <EnumProperty Name="OptimizationLevel">
+    <EnumValue Name="O0" Switch="O0" />
+    <EnumValue Name="O1" Switch="O1" />
+    <EnumValue Name="O2" Switch="O2" />
+    <EnumValue Name="O3" Switch="O3" />
+    <EnumValue Name="Os" Switch="Os" />
+  </EnumProperty>
+  <BoolProperty Name="ThumbMode" Switch="mthumb" ReverseSwitch="marm" />
+  <BoolProperty Name="Neon" Switch="mfpu=neon" />
+  <BoolProperty Name="StrictAliasing" Switch="fstrict-aliasing" ReverseSwitch="fno-strict-aliasing" />
+  <BoolProperty Name="UnswitchLoops" Switch="funswitch-loops" />
+  <IntProperty Name="InlineLimit" Switch="finline-limit=" />
+  <BoolProperty Name="OmitFramePointer" Switch="fomit-frame-pointer" />
+
+  <!-- Preprocessor -->
+  <StringListProperty Name="PreprocessorDefinitions" Switch="D" />
+
+  <!-- Code Generation -->
+  <BoolProperty Name="GccExceptionHandling" Switch="fexceptions" ReverseSwitch="fno-exceptions" />
+  <BoolProperty Name="SoftFloat" Switch="msoft-float" />
+  <BoolProperty Name="PositionIndependentCode" Switch="fpic" />
+  <BoolProperty Name="StackProtector" Switch="fstack-protector" />
+
+  <!-- Language -->
+  <BoolProperty Name="RuntimeTypeInfo"  Switch="frtti" ReverseSwitch="fno-rtti" />
+
+  <BoolProperty Name="ShortEnums" Switch="fshort-enums" ReverseSwitch="fno-short-enums" />
+  <BoolProperty Name="ShortWChar" Switch="fshort-wchar" ReverseSwitch="fno-short-wchar" />
+
+  <!-- Precompiled Headers -->
+  <EnumProperty Name="PrecompiledHeader">
+    <EnumValue Name="Create" />
+    <EnumValue Name="Use" />
+    <EnumValue Name="NotUsing" />
+  </EnumProperty>
+  <StringProperty Subtype="file" Name="PrecompiledHeaderOutputFile" Switch="ignore" />
+
+  <!-- Output Files -->
+  <StringProperty Subtype="file" Name="ObjectFileName" Switch="o " />
+
+  <!-- Advanced -->
+  <EnumProperty Name="CompileAs">
+    <EnumValue Name="Default" />
+    <EnumValue Name="CompileAsC" Switch="x c" />
+    <EnumValue Name="CompileAsCpp" Switch="x c++" />
+    <EnumValue Name="CompileAsAsm" Switch="x assembler" />
+    <EnumValue Name="CompileAsCHeader" Switch="x c-header" />
+    <EnumValue Name="CompileAsCppHeader" Switch="x c++-header" />
+  </EnumProperty>
+  <StringProperty Subtype="file" Name="ForcedIncludeFiles" Switch="include " />
+
+  <!-- NoExecStack is controlled in tandem for both compiling and linking by general property NoExecStack -->
+  <BoolProperty Name="NoExecStack" Switch="Wa,--noexecstack" ReverseSwitch="Wa,--execstack" />
+
+  <!-- Command Line -->
+  <StringProperty Name="AdditionalOptions" />
+
+</Rule>

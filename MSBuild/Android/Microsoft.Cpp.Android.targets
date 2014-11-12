@@ -42,9 +42,7 @@
         <CompileAs                    Condition="('%(ClCompile.CompileAs)' == 'Default' and '%(ClCompile.Extension)' == '.asm')">CompileAsAsm</CompileAs>
         <CompileAs                    Condition="('%(ClCompile.CompileAs)' == 'Default' and ('%(ClCompile.Extension)' != '.c' and '%(ClCompile.Extension)' != '.s' and '%(ClCompile.Extension)' != '.asm'))">CompileAsCpp</CompileAs>
         <MinimalRebuildFromTracking   Condition="'$(BuildType)' != 'Build' or '$(ForceRebuild)' == 'true'">false</MinimalRebuildFromTracking>
-        <Architecture                 Condition="'$(AndroidArch)' == 'armv5te'">armv5te</Architecture>
-        <Architecture                 Condition="'$(AndroidArch)' == 'armv7-a'">armv7-a</Architecture>
-        <BrowseInformation			  >false</BrowseInformation>
+        <BrowseInformation>false</BrowseInformation>
       </ClCompile>
     </ItemGroup>
     
@@ -95,7 +93,7 @@
 
         EchoCommandLines                   ="%(ClCompile.EchoCommandLines)"
         GCCToolPath                        ="$(GccCompiler)"
-        PropertyXmlFile                    ="$(VCTargetsPath)\Platforms\Android\Props\android_gcc_compile.xml"
+        PropertyXmlFile                    ="$(VCTargetsPath)\Platforms\Android\Props\android_gcc_compile_tool.xml"
     >
     </GCCCompile>
 
@@ -118,7 +116,7 @@
 
         EchoCommandLines                   ="%(ClCompile.EchoCommandLines)"
         GCCToolPath                        ="$(GccCompiler)"
-        PropertyXmlFile                    ="$(VCTargetsPath)\Platforms\Android\Props\android_gcc_compile.xml"
+        PropertyXmlFile                    ="$(VCTargetsPath)\Platforms\Android\Props\android_gcc_compile_tool.xml"
     >
     </GCCCompile>
 
@@ -184,6 +182,12 @@
       <Link_MinimalRebuildFromTracking Condition="'$(BuildType)' != 'Build' or '$(ForceRebuild)' == 'true'" >false</Link_MinimalRebuildFromTracking>
       <Link_MinimalRebuildFromTracking Condition="'$(Link_MinimalRebuildFromTracking)' == ''">true</Link_MinimalRebuildFromTracking>
     </PropertyGroup>
+
+    <ItemGroup>
+      <Link>
+        <AdditionalOptions>$(ToolsetLinkerFlags) %(Link.AdditionalOptions)</AdditionalOptions>
+      </Link>
+    </ItemGroup>
 
     <GCCLink
         BuildingInIDE                  ="$(BuildingInsideVisualStudio)"
@@ -263,6 +267,7 @@
     <PropertyGroup>
       <ApkLibsPath Condition="'$(PlatformShortName)' == 'arm' and '$(AndroidArch)' == 'armv5te'">armeabi</ApkLibsPath>
       <ApkLibsPath Condition="'$(PlatformShortName)' == 'arm' and '$(AndroidArch)' == 'armv7-a'">armeabi-v7a</ApkLibsPath>
+      <ApkLibsPath Condition="'$(PlatformShortName)' == 'arm' and '$(AndroidArch)' == 'armv7-a-hard'">armeabi-v7a-hard</ApkLibsPath>
       <ApkLibsPath Condition="'$(PlatformShortName)' == 'x86'">x86</ApkLibsPath>
       <ApkLibsPath Condition="'$(PlatformShortName)' == 'mips'">mips</ApkLibsPath>
     </PropertyGroup>

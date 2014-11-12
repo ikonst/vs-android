@@ -1,0 +1,33 @@
+<!--
+***********************************************************************************************
+(c) 2012 Gavin Pugh http://www.gavpugh.com/ - Released under the open-source zlib license
+***********************************************************************************************
+-->
+
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+
+    <!-- Path to gcc prebuilt libs -->
+    <PrebuiltDir>$(AndroidNdkDir)\toolchains\$(PlatformToolsetVersion)\prebuilt\$(PrebuiltWinDirName)</PrebuiltDir>
+
+    <!-- Path to the GCC compilation tools -->
+    <GccToolsPath>$(PrebuiltDir)\bin</GccToolsPath>
+
+    <!-- GCC compilation tool filenames -->
+    <GccCompiler>$(PlatformTriplet)-g++.exe</GccCompiler>
+    <GccLinker>$(PlatformTriplet)-g++.exe</GccLinker>
+    <GccLibrarian>$(PlatformTriplet)-ar.exe</GccLibrarian>
+
+  </PropertyGroup>
+
+  <Import Condition="'$(PlatformShortName)' == 'arm'" Project="Gcc.Arm.Common.props"/>
+
+  <!-- Uses ToolsetArch... properties, defined in the arch props -->
+  <PropertyGroup>
+    <ToolsetCompilerFlags>-no-canonical-prefixes -ffunction-sections -funwind-tables $(ToolsetCompilerFlags)</ToolsetCompilerFlags>
+    <ToolsetLinkerFlags>-no-canonical-prefixes $(ToolsetLinkerFlags)</ToolsetLinkerFlags>
+    <ToolsetIntellisenseForcedIncludeFiles>$(MSBuildThisFileDirectory)$(PlatformToolsetVersion)\gcc.h</ToolsetIntellisenseForcedIncludeFiles>
+  </PropertyGroup>
+
+</Project>
