@@ -49,10 +49,23 @@ Troubleshooting:
 Version History
 ===============
 
+Next version
+
+Highlights:
+  * New toolchain: clang-3.4
+  * New architecture: arm7v-a-hard
+  * New standard C++ libraries (STL): libc++-shared, libc++-static
+  * Include directories are now ordered so that the user may override the system headers
+  * Vastly improved Intellisense support
+
+Engineering notes:
+  * In previous versions, the same set of switches was passed to the internal Intellisense compiler and to the toolchain compiler (e.g. gcc). This worked in many cases (in particular thanks to the Intellisense compiler supporting the -I and -D switches in addition to /I and /D), but failed in others. In this version, Visual Studio is only given switches that affect Intellisense, while the GCC MsBuild task gets its configuration from a separate file.
+  As a side effect, you'd no longer see GCC switches in the Properties window. Instead, some compiler features were assigned __VA_FEATURE defines which hint about their availability to Intellisense.
+  * "Polyfill" headers are provided for Intellisense. They make an effort to simulate gcc/clang environment and, at the same time, to reduce the number of errors during Intellisense parsing. You may introduce additional hacks to the intellisense.h header. Additionally, the __INTELLISENSE__ define is useful as a last resort to provide an alternative code path for Intellisense parsing.
+
 v0.963 - 19th July 2014
 
-  * Fix for issue with the "Windows 64-bit" NDK. The "TRACKER : error TRK0002: Failed to execute command" error.
-  ** Thanks to Ilya Konstantinov for the fix.
+  * Fix for issue with the "Windows 64-bit" NDK ("TRACKER : error TRK0002: Failed to execute command"). Thanks to Ilya Konstantinov for the fix.
   * Added warning message for using the new "(64-bit Target)" NDK.
   ** Confusingly there are 32-bit and 64-bit Windows flavors of the "(32-bit Target)" and "(64-bit Target)" NDKs.
   ** vs-android only supports the "(32-bit Target)" NDK currently.
