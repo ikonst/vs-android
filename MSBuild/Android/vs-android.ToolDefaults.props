@@ -44,7 +44,6 @@
       <CppLanguageStandard      Condition="'%(ClCompile.CppLanguageStandard)'       == ''">$(DefaultCppLanguageStandard)</CppLanguageStandard>
 
       <CompileAs                Condition="'%(ClCompile.CompileAs)'                 == ''">Default</CompileAs>
-
       <IgnoreVaListWarning      Condition="'%(ClCompile.IgnoreVaListWarning)'       == ''">true</IgnoreVaListWarning>
 
       <!--

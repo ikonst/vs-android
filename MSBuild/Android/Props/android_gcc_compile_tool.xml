@@ -90,7 +90,6 @@ For the file used in Visual Studio UI and Intellisense, see android_gcc_compile.
     <EnumValue Name="gnu++1y" Switch="std=gnu++1y"/>
   </EnumProperty>
   <BoolProperty Name="RuntimeTypeInfo"  Switch="frtti" ReverseSwitch="fno-rtti" />
-
   <BoolProperty Name="ShortEnums" Switch="fshort-enums" ReverseSwitch="fno-short-enums" />
   <BoolProperty Name="ShortWChar" Switch="fshort-wchar" ReverseSwitch="fno-short-wchar" />
 
