@@ -127,6 +127,7 @@ For the file influencing actual gcc and clang command lines, see android_gcc_com
   <StringProperty Subtype="file" Name="ObjectFileName" DisplayName="Object File Name" Category="Output Files" />
   
   <!-- Advanced -->
+  <!-- BTW, Visual Studio 2010 Intellisense does not actually respect /TP and /TC, and defaults to C++ -->
   <EnumProperty Name="CompileAs" DisplayName="Compile As" Category="Advanced">
     <EnumValue Name="Default" DisplayName="Default" />
     <EnumValue Name="CompileAsC" DisplayName="Compile as C Code" Switch="TC" />
