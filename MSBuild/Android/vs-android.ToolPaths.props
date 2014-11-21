@@ -49,15 +49,21 @@
     <AndroidStlLibs>-lstdc++;$(AndroidStlLibPath)\libsupc++.a;-lgnustl_shared;-lgcc</AndroidStlLibs>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(AndroidStlType)' == 'c++_static'">
+  <PropertyGroup Condition="'$(AndroidStlType)' == 'c++_static' or '$(AndroidStlType)' == 'c++_dynamic'">
     <AndroidStlIncludePath>$(AndroidNdkDir)\sources\cxx-stl\llvm-libc++\libcxx\include;$(AndroidNdkDir)\sources\cxx-stl\gabi++\include;$(AndroidNdkDir)\sources\android\support\include</AndroidStlIncludePath>
     <AndroidStlLibPath>$(AndroidNdkDir)\sources\cxx-stl\llvm-libc++\libs\$(ArchStlDirName)</AndroidStlLibPath>
+    <!--
+      As per comment in ndk/sources/cxx-stl/llvm-libc++/Android.mk:
+      For now, this library can only be used to build C++11 binaries.
+    -->
+    <DefaultCppLanguageStandard>c++11</DefaultCppLanguageStandard>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(AndroidStlType)' == 'c++_static'">
     <AndroidStlLibs>$(AndroidStlLibPath)\libc++_static.a</AndroidStlLibs>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(AndroidStlType)' == 'c++_dynamic'">
-    <AndroidStlIncludePath>$(AndroidNdkDir)\sources\cxx-stl\llvm-libc++\libcxx\include;$(AndroidNdkDir)\sources\cxx-stl\gabi++\include;$(AndroidNdkDir)\sources\android\support\include</AndroidStlIncludePath>
-    <AndroidStlLibPath>$(AndroidNdkDir)\sources\cxx-stl\llvm-libc++\libs\$(ArchStlDirName)</AndroidStlLibPath>
     <AndroidStlLibs>$(AndroidStlLibPath)\libc++_shared.so</AndroidStlLibs>
   </PropertyGroup>
 
