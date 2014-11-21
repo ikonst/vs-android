@@ -33,6 +33,7 @@
       <PositionIndependentCode  Condition="'%(ClCompile.PositionIndependentCode)'   == ''">true</PositionIndependentCode>
       <StackProtector           Condition="'%(ClCompile.StackProtector)'            == ''">true</StackProtector>
       <NoExecStack              Condition="'%(ClCompile.NoExecStack)'               == ''">$(NoExecStack)</NoExecStack>
+      <Visibility               Condition="'%(ClCompile.Visibility)'                == ''">Default</Visibility>
       
       <PrecompiledHeader        Condition="'%(ClCompile.PrecompiledHeader)'         == ''">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderOutputFile Condition="'%(ClCompile.PrecompiledHeaderOutputFile)' == ''">$(IntDir)$(TargetName).pch.h</PrecompiledHeaderOutputFile>

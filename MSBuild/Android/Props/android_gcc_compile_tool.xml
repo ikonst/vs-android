@@ -72,6 +72,12 @@ For the file used in Visual Studio UI and Intellisense, see android_gcc_compile.
   <BoolProperty Name="SoftFloat" Switch="msoft-float" />
   <BoolProperty Name="PositionIndependentCode" Switch="fpic" />
   <BoolProperty Name="StackProtector" Switch="fstack-protector" />
+  <EnumProperty Name="Visibility">
+    <EnumValue Name="Default" />
+    <EnumValue Name="Internal" Switch="fvisibility=internal" />
+    <EnumValue Name="Hidden" Switch="fvisibility=hidden" />
+    <EnumValue Name="Protected" Switch="fvisibility=protected" />
+  </EnumProperty>
 
   <!-- Language -->
   <EnumProperty Name="CppLanguageStandard">

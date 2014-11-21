@@ -94,6 +94,12 @@ For the file influencing actual gcc and clang command lines, see android_gcc_com
   <BoolProperty Name="GccExceptionHandling" DisplayName="Enable C++ Exceptions" Category="Code Generation" Switch="D __VA_EXCEPTIONS=1" ReverseSwitch="D __VA_EXCEPTIONS=0" />
   <BoolProperty Name="PositionIndependentCode" DisplayName="Generate Position-Independent Code" Category="Code Generation" Switch="D __VA_PIC=1" ReverseSwitch="D __VA_PIC=" />
   <BoolProperty Name="StackProtector" DisplayName="Stack Protection" Category="Code Generation" />
+  <EnumProperty Name="Visibility" DisplayName="Default Symbol Visibility" Category="Code Generation" Description="Set the default ELF image symbol visibility to the specified option. All symbols will be marked with this unless overridden within the code.">
+    <EnumValue Name="Default" DisplayName="Default (Public)" />
+    <EnumValue Name="Internal" DisplayName="Internal" />
+    <EnumValue Name="Hidden" DisplayName="Hidden" />
+    <EnumValue Name="Protected" DisplayName="Protected" />
+  </EnumProperty>
 
   <!-- Language -->
   <EnumProperty Name="CppLanguageStandard" DisplayName="C++ Language Standard" Description="Determines the C++ language standard." Category="Language">
