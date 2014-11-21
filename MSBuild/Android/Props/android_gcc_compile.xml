@@ -96,6 +96,15 @@ For the file influencing actual gcc and clang command lines, see android_gcc_com
   <BoolProperty Name="StackProtector" DisplayName="Stack Protection" Category="Code Generation" />
 
   <!-- Language -->
+  <EnumProperty Name="CppLanguageStandard" DisplayName="C++ Language Standard" Description="Determines the C++ language standard." Category="Language">
+    <EnumValue Name="Default" DisplayName="Default" Description=""/>
+    <EnumValue Name="c++98" DisplayName="C++98" Description="C++98 Language Standard."/>
+    <EnumValue Name="c++11" DisplayName="C++11" Description="C++11 Language Standard."/>
+    <EnumValue Name="c++1y" DisplayName="C++1y" Description="C++1y Language Standard."/>
+    <EnumValue Name="gnu++98" DisplayName="C++98 (GNU Dialect)" Description="C+98  (GNU Dialect) Language Standard."/>
+    <EnumValue Name="gnu++11" DisplayName="C++11 (GNU Dialect)" Description="C++11 (GNU Dialect) Language Standard."/>
+    <EnumValue Name="gnu++1y" DisplayName="C++1y (GNU Dialect)" Description="C++1y (GNU Dialect) Language Standard."/>
+  </EnumProperty>
   <BoolProperty Name="RuntimeTypeInfo" DisplayName="Enable Run-Time Type Information" Category="Language" Switch="D __VA_RTTI=1" ReverseSwitch="D __VA_RTTI=0" />
   <BoolProperty Name="ShortEnums" DisplayName="Short Enums" Category="Language" Switch="D __VA_SHORT_ENUMS" />
   <BoolProperty Name="ShortWChar" DisplayName="Short wchar_t" Category="Language" Description="Override the underlying type for ‘wchar_t’ to be ‘short unsigned int’ instead of the default for the target." Switch="D __VA_SHORT_WCHAR" />

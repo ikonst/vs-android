@@ -74,6 +74,15 @@ For the file used in Visual Studio UI and Intellisense, see android_gcc_compile.
   <BoolProperty Name="StackProtector" Switch="fstack-protector" />
 
   <!-- Language -->
+  <EnumProperty Name="CppLanguageStandard">
+    <EnumValue Name="Default" Switch=""/>
+    <EnumValue Name="c++98" Switch="std=c++98"/>
+    <EnumValue Name="c++11" Switch="std=c++11"/>
+    <EnumValue Name="c++1y" Switch="std=c++1y"/>
+    <EnumValue Name="gnu++98" Switch="std=gnu++98"/>
+    <EnumValue Name="gnu++11" Switch="std=gnu++11"/>
+    <EnumValue Name="gnu++1y" Switch="std=gnu++1y"/>
+  </EnumProperty>
   <BoolProperty Name="RuntimeTypeInfo"  Switch="frtti" ReverseSwitch="fno-rtti" />
 
   <BoolProperty Name="ShortEnums" Switch="fshort-enums" ReverseSwitch="fno-short-enums" />
