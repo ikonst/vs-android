@@ -58,10 +58,29 @@ Highlights:
   * Include directories are now ordered so that the user may override the system headers
   * Vastly improved Intellisense support
 
+Bug fixes:
+  * General properties can now be set through user property sheets
+
+New options:
+  * Thumb Mode (ARM only)
+  * NEON Instrinsics (ARM only)
+  * C++ Language Standard
+  * Short wchar_t
+  * Default Symbol Visibility
+  * No Executable Stack
+  (and others)
+
+Breaking changes:
+  * ThumbMode is a general setting now since it affects both compilation (of every
+    compilation unit) and linkage (with either ARM or Thumb variants of the gcc libraries).
+    As such, you should assign it per-project.
+
 Engineering notes:
-  * In previous versions, the same set of switches was passed to the internal Intellisense compiler and to the toolchain compiler (e.g. gcc). This worked in many cases (in particular thanks to the Intellisense compiler supporting the -I and -D switches in addition to /I and /D), but failed in others. In this version, Visual Studio is only given switches that affect Intellisense, while the GCC MsBuild task gets its configuration from a separate file.
-  As a side effect, you'd no longer see GCC switches in the Properties window. Instead, some compiler features were assigned __VA_FEATURE defines which hint about their availability to Intellisense.
-  * "Polyfill" headers are provided for Intellisense. They make an effort to simulate gcc/clang environment and, at the same time, to reduce the number of errors during Intellisense parsing. You may introduce additional hacks to the intellisense.h header. Additionally, the __INTELLISENSE__ define is useful as a last resort to provide an alternative code path for Intellisense parsing.
+  * In previous versions, the same set of switches was passed to the internal Intellisense compiler and to the toolchain compiler (e.g. gcc). This worked in many cases (in particular thanks to the Intellisense compiler supporting the -I and -D switches in addition to /I and /D), but failed in others (/TC vs. -x c). In this version, Visual Studio is only given switches that affect Intellisense, while the GCC MsBuild task gets its configuration from a separate file.
+
+  As a side effect, you'd no longer see GCC switches in the Properties window. Instead, compiler features that are supported by Intellisense are controlled through CL-like switches (e.g. /TC) and other compiler features were assigned __VA_FEATURE defines which hint about their availability to the "polyfill" header.
+
+  * "Polyfill" headers (gcc.h, clang.h, intellisense.h) are provided for Intellisense. They make an effort to simulate gcc/clang environment and, at the same time, to reduce the number of errors during Intellisense parsing. You may introduce additional hacks to the intellisense.h header. Additionally, the __INTELLISENSE__ define is useful as a last resort to provide an alternative code path for Intellisense parsing.
 
 v0.963 - 19th July 2014
 
