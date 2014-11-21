@@ -77,6 +77,13 @@
                   </StringProperty.DataSource>
   </StringProperty>
 
+  <!--
+    Note:
+    Although 'PlatformToolset' is in the 'General' category and not 'ProjectDefaults',
+    it has DataSource.Label="Configuration" just like them, which means it is
+    configuration for the system property sheets (Microsoft.Cpp.props etc.)
+    and cannot be overriden by user property sheets.
+  -->
   <EnumProperty Name="PlatformToolset" DisplayName="Platform Toolset" Category="General">
     <EnumValue Name="arm-linux-androideabi-4.6" DisplayName="ARM gcc 4.6 Toolchain (arm-linux-androideabi-4.6)" />
     <EnumValue Name="arm-linux-androideabi-4.8" DisplayName="ARM gcc 4.8 Toolchain (arm-linux-androideabi-4.8)" />
