@@ -7,6 +7,32 @@
 
 <!-- Based on script: MSBuild\Microsoft.Cpp\v4.0\1033\general_ps.xml -->
 
+<!--
+
+  EXPLANATION:
+  This file contains only the properties form android_general.xml
+  that are suitable to be displayed in a user property sheet,
+  which means excluding properties with DataSource.Label="Configuration".
+
+  A typical .vcxproj file will contain:
+    <PropertyGroup Condition="..." Label="Configuration">
+      ...
+    </PropertyGroup>
+
+    <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+    ...
+    <ImportGroup Condition="..." Label="PropertySheets">
+      <Import Project="mypropsheet.props" />
+      ...
+    </ImportGroup>
+
+  Properties labeled "Configuration" are intended for Microsoft.Cpp.props,
+  and since user property sheets (such as 'mypropsheet.props' in example
+  above) are only imported afterwards, they can no longer modify those
+  properties. (Technically they can, but they won't have the desired effect.)
+
+-->
+
 <Rule
       Name="ConfigurationGeneral"
       DisplayName="General"
@@ -20,5 +46,69 @@
   <Rule.DataSource>
     <DataSource Persistence="ProjectFile" Label="Configuration" />
   </Rule.DataSource>
+
+  <!-- General -->
+  <StringProperty Name="OutDir" DisplayName="Output Directory"
+                  Description="Specifies a relative path to the output file directory; can include environment variables."
+                  Category="General" Default="$(SolutionDir)$(Configuration)\"
+                  Subtype="folder"
+                  F1Keyword="VC.Project.VCConfiguration.OutputDirectory">
+                  <StringProperty.DataSource>
+                     <DataSource Persistence="ProjectFile" Label="" />
+                  </StringProperty.DataSource>
+  </StringProperty>
+  <StringProperty Name="IntDir" DisplayName="Intermediate Directory"
+                  Description="Specifies a relative path to the intermediate file directory; can include environment variables."
+                  Category="General" Default="$(Configuration)\"
+                  Subtype="folder"
+                  F1Keyword="VC.Project.VCConfiguration.IntermediateDirectory">
+                  <StringProperty.DataSource>
+                     <DataSource Persistence="ProjectFile" Label="" />
+                  </StringProperty.DataSource>
+  </StringProperty>
+  <StringProperty Name="TargetName" DisplayName="Target Name"
+                  Description="Specifies a file name that this project will generate."
+                  F1Keyword="VC.Project.VCConfiguration.TargetName"
+                  Category="General" Default="$(ProjectName)"
+                  >
+                  <StringProperty.DataSource>
+                     <DataSource Persistence="ProjectFile" Label="" />
+                  </StringProperty.DataSource>
+  </StringProperty>
+  <StringProperty Name="TargetExt" DisplayName="Target Extension"
+                  Description="Specifies a file extension that this project will generate. (Example: .exe or .dll)"
+                  F1Keyword="VC.Project.VCConfiguration.TargetExt"
+                  Category="General"
+                  >
+                  <StringProperty.DataSource>
+                     <DataSource Persistence="ProjectFile" Label="" />
+                  </StringProperty.DataSource>
+  </StringProperty>
+  <StringListProperty Name="ExtensionsToDeleteOnClean" DisplayName="Extensions to Delete on Clean"
+                      Description="Semi-colon delimited wildcard specification for which files in the intermediate directory to delete on clean or rebuild."
+                      Category="General" Separator=";"
+                      F1Keyword="VC.Project.VCConfiguration.DeleteExtensionsOnClean">
+                      <StringListProperty.DataSource>
+                            <DataSource Persistence="ProjectFile" Label="" />
+                      </StringListProperty.DataSource>
+  </StringListProperty>
+  <StringProperty Name="BuildLogFile" DisplayName="Build Log File"
+                  Description="Specifies the build log file to write to when build logging is enabled."
+                  F1Keyword="VC.Project.VCConfiguration.BuildLogFile"
+                  Category="General" Default="$(ProjectDir)\$(MSBuildProjectName).log"
+                  Subtype="file">
+                  <StringProperty.DataSource>
+                     <DataSource Persistence="ProjectFile" ItemType="BuildLog" PersistedName="Path" />
+                  </StringProperty.DataSource>
+  </StringProperty>
+
+  <!-- Equivalent to NDK variable LOCAL_DISABLE_NO_EXECUTE -->
+  <BoolProperty Name="NoExecStack" DisplayName="No Executable Stack"
+                Description="Mark output as not requiring executable stack (&quot;NX bit&quot;). This is a security feature that is enabled by default."
+                Category="General">
+                <BoolProperty.DataSource>
+                   <DataSource Persistence="ProjectFile" Label="" />
+                </BoolProperty.DataSource>
+  </BoolProperty>
 
 </Rule>

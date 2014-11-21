@@ -71,6 +71,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!--
+      For the project's property sheet, the full property page is displayed.
+      For user property sheets, a partial property page is displayed without
+      properties having DataSource.Label="Configuration".
+    -->
     <PropertyPageSchema Include="$(VCTargetsPath)\Platforms\Android\Props\android_general.xml">
       <Context>Project</Context>
     </PropertyPageSchema>
