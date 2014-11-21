@@ -80,6 +80,16 @@ For the file used in Visual Studio UI and Intellisense, see android_gcc_compile.
   </EnumProperty>
 
   <!-- Language -->
+  <EnumProperty Name="CLanguageStandard">
+    <EnumValue Name="Default" Switch=""/>
+    <EnumValue Name="c89" Switch="std=c89"/>
+    <EnumValue Name="iso9899:199409" Switch="std=iso9899:199409"/>
+    <EnumValue Name="c99" Switch="std=c99"/>
+    <EnumValue Name="c11" Switch="std=c11"/>
+    <EnumValue Name="gnu89" Switch="std=gnu89"/>
+    <EnumValue Name="gnu99" Switch="std=gnu99"/>
+    <EnumValue Name="gnu11" Switch="std=gnu11"/>
+  </EnumProperty>
   <EnumProperty Name="CppLanguageStandard">
     <EnumValue Name="Default" Switch=""/>
     <EnumValue Name="c++98" Switch="std=c++98"/>

@@ -102,6 +102,16 @@ For the file influencing actual gcc and clang command lines, see android_gcc_com
   </EnumProperty>
 
   <!-- Language -->
+  <EnumProperty Name="CLanguageStandard" DisplayName="C Language Standard" Description="Determines the C language standard." Category="Language">
+    <EnumValue Name="Default" Switch="" DisplayName="Default"/>
+    <EnumValue Name="c89" Switch="std=c89" DisplayName="C89" Description="C89 Language Standard."/>
+    <EnumValue Name="iso9899:199409" Switch="std=iso9899:199409" DisplayName="C95" Description="C95 Language Standard."/>
+    <EnumValue Name="c99" Switch="std=c99" DisplayName="C99" Description="C99 Language Standard."/>
+    <EnumValue Name="c11" Switch="std=c11" DisplayName="C11" Description="C11 Language Standard."/>
+    <EnumValue Name="gnu89" Switch="std=gnu89" DisplayName="C89 (GNU Dialect)" Description="C89 (GNU Dialect) Language Standard."/>
+    <EnumValue Name="gnu99" Switch="std=gnu99" DisplayName="C99 (GNU Dialect)" Description="C99 (GNU Dialect) Language Standard."/>
+    <EnumValue Name="gnu11" Switch="std=gnu11" DisplayName="C11 (GNU Dialect)" Description="C11 (GNU Dialect) Language Standard."/>
+  </EnumProperty>
   <EnumProperty Name="CppLanguageStandard" DisplayName="C++ Language Standard" Description="Determines the C++ language standard." Category="Language">
     <EnumValue Name="Default" DisplayName="Default" Description=""/>
     <EnumValue Name="c++98" DisplayName="C++98" Description="C++98 Language Standard."/>
