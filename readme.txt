@@ -76,11 +76,19 @@ Breaking changes:
     As such, you should assign it per-project.
 
 Engineering notes:
-  * In previous versions, the same set of switches was passed to the internal Intellisense compiler and to the toolchain compiler (e.g. gcc). This worked in many cases (in particular thanks to the Intellisense compiler supporting the -I and -D switches in addition to /I and /D), but failed in others (/TC vs. -x c). In this version, Visual Studio is only given switches that affect Intellisense, while the GCC MsBuild task gets its configuration from a separate file.
+  * In previous versions, the same set of switches was passed to the internal Intellisense compiler and to the toolchain compiler (e.g. gcc). This worked in many cases (in particular thanks to the Intellisense compiler supporting the -I and -D switches in addition to /I and /D), but failed in others (/TC vs. -x c). In this version, Visual Studio sees only the switches that affect Intellisense, while the GccCompile MSBuild task relies on its own set of switches.
 
   As a side effect, you'd no longer see GCC switches in the Properties window. Instead, compiler features that are supported by Intellisense are controlled through CL-like switches (e.g. /TC) and other compiler features were assigned __VA_FEATURE defines which hint about their availability to the "polyfill" header.
 
-  * "Polyfill" headers (gcc.h, clang.h, intellisense.h) are provided for Intellisense. They make an effort to simulate gcc/clang environment and, at the same time, to reduce the number of errors during Intellisense parsing. You may introduce additional hacks to the intellisense.h header. Additionally, the __INTELLISENSE__ define is useful as a last resort to provide an alternative code path for Intellisense parsing.
+  To inspect the command line passed to gcc or clang, use the 'Echo Command Line' property.
+  To inspect the command line passed to Intellisense, go to Tools | Options, then select Text Editor | C/C++ | Advanced and set the following Diangostic Logging settings:
+    Enable Logging: True
+    Logging Level: 5
+    Logging Filter: 8
+
+  * "Polyfill" headers (gcc.h, clang.h, intellisense.h) are provided for Intellisense. They make an effort to simulate gcc/clang environment and, at the same time, to reduce the number of errors during Intellisense parsing. You may introduce additional hacks to the intellisense.h header.
+
+  * Hint: Whenever the polyfill headers are not enough and you are haunted by Intellisense errors, #ifdef __INTELLISENSE__ can be used to provide an alternative code path for the Intellisense compiler.
 
 v0.963 - 19th July 2014
 
