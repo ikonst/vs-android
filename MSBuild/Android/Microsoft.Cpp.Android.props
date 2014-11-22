@@ -51,7 +51,7 @@
 
   <!-- Couple of things to disable that we don't need for Android -->
   <PropertyGroup>
-    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+    <GenerateImportLib>false</GenerateImportLib>
     <GenerateManifest>false</GenerateManifest>  
   </PropertyGroup>
 

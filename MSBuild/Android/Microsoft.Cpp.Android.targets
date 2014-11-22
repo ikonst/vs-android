@@ -7,6 +7,19 @@
 <!-- Largely based on: MSBuild\Microsoft.Cpp\v4.0\Platforms\Win32\Microsoft.Cpp.Win32.targets -->
 
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+    On Android, the "import library" is the same as the output file (i.e. the .so file).
+    %(Link.ImportLibrary) is needed for project reference-based library dependencies.
+
+    We must initialize it before importing Microsoft.CppCommon.targets, since Microsoft has
+    its own default (with a .lib extension).
+  -->
+  <ItemDefinitionGroup>
+    <Link>
+     <ImportLibrary Condition="'%(Link.ImportLibrary)' == ''">%(Link.OutputFile)</ImportLibrary>
+   </Link>
+  </ItemDefinitionGroup>
+
   <Import Project="$(VCTargetsPath)\Platforms\Android\ImportBefore\*.targets" Condition="Exists('$(VCTargetsPath)\Platforms\Android\ImportBefore')" />
   <Import Project="$(VCTargetsPath)\Microsoft.CppCommon.targets" />
 
@@ -24,8 +37,6 @@
     <ToolArchitecture Condition="'$(AndroidNdk64)' == 'false'">Native32Bit</ToolArchitecture>
     <ToolArchitecture Condition="'$(AndroidNdk64)' == 'true'">Native64Bit</ToolArchitecture>
   </PropertyGroup>
-
-
 
   <!-- *******************************************************************************************
         CLCompile
