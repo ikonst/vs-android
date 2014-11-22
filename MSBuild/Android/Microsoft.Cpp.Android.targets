@@ -9,7 +9,8 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!--
     On Android, the "import library" is the same as the output file (i.e. the .so file).
-    %(Link.ImportLibrary) is needed for project reference-based library dependencies.
+    %(Link.ImportLibrary) is used to link with referenced projects
+    when 'Link Library Dependencies' is set.
 
     We must initialize it before importing Microsoft.CppCommon.targets, since Microsoft has
     its own default (with a .lib extension).
