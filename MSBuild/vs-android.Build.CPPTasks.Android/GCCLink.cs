@@ -46,7 +46,6 @@ namespace vs_android.Build.CPPTasks.Android
 		public GCCLink()
 			: base( new ResourceManager( "vs_android.Build.CppTasks.Android.Properties.Resources", Assembly.GetExecutingAssembly() ) )
 		{
-
 		}
 
 		protected override bool ValidateParameters()
@@ -113,7 +112,8 @@ namespace vs_android.Build.CPPTasks.Android
 		// Called when linker outputs a line
 		protected override void LogEventsFromTextOutput(string singleLine, MessageImportance messageImportance)
 		{
-			base.LogEventsFromTextOutput(Utils.GCCOutputReplace(singleLine), messageImportance);   
+			string formattedLine = Utils.ParseLinkerMessage(singleLine); // reformat line for VC
+			base.LogEventsFromTextOutput(formattedLine, messageImportance);
 		}
 
 		protected override void PostProcessSwitchList()

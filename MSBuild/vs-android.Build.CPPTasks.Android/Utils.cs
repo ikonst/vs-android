@@ -5,9 +5,6 @@
 // Misc pathing utils, and some constants.
  
 using System;
-using System.Linq;
-using System.Text;
-using System.IO;
 using System.Diagnostics;
 using System.Management;
 using System.Text.RegularExpressions;
@@ -75,73 +72,189 @@ namespace vs_android.Build.CPPTasks.Android
 			}
 		}
 
+		static readonly string REGEX_OPTIONAL_DRIVE_PREFIX = @"(?:[a-zA-Z]:)?";
 
-		// Most aggressive (hardest) regex first. We early out after the first match.
-		private static readonly string[] GCC_REGEX_MATCH = {
-												 @"^\s*In file included from (.?.?[^:]*.*?):([1-9]\d*):(.*$)",		// "In file included from CppSource/demo.c:32:"
-												 @"^\s*(.?.?[^:]*.*?):([1-9]\d*):([1-9]\d*):(.*$)",					// "CppSource/importgl.c:25:17: error: new.h: No such file or directory"
-												 @"^\s*(.?.?[^:]*.*?):([1-9]\d*):(.*$)",							// "CppSource/demo.c:51: error: conflicting types for 'seedRandom'"
-												 @"^\s*(.?.?[^:]*.*?):(.?.?[^:]*.*?):([1-9]\d*):(.*$)",				// "Android/Debug/app-android.o:C:\Projects\vs-android_samples\san-angeles/CppSource/app-android.c:38: first defined here"
-											 };
+		// Captures:
+		//  foo.c
+		//  C:\foo.c:
+		static readonly string REGEX_PATH = @"(" + REGEX_OPTIONAL_DRIVE_PREFIX + "[^:]+)";
 
-		private static readonly string[] GCC_REGEX_FILENAME = {
-												 @"$1",
-												 @"$1",
-												 @"$1",
-												 @"$2",
-											 };
-
-		private static readonly string[] GCC_REGEX_REPLACE = {
-												 @"($2): includes this header: $3",
-												 @"($2,$3): $4",
-												 @"($2): $3",
-												 @"($3): '$1' $4",
-											 };
-
-		public static string GCCOutputReplace(string line)
+		enum MessageType
 		{
-			// Replaces given GCC style output, with output that obeys Visual Studio's 'jump to line' formatting. So:
-			//		CppSource/demo.c:51: error: conflicting types for 'seedRandom'
-			// becomes:
-			//		c:\Projects\san-angeles\CppSource\demo.c(51) error: conflicting types for 'seedRandom'
+			Warning,
+			Error
+		};
 
-			for (int i = 0; i < GCC_REGEX_MATCH.Length; i++)
+		/// <summary>
+		/// Implements an error parser similar to the Eclipse error parser.
+		/// </summary>
+		struct ErrorParser
+		{
+			public Regex regex;
+			public MessageType type;
+			public int fileGroup;
+			public int lineGroup;
+			public int columnGroup;
+			public string messageReplace;
+
+			public string Parse(string input, string errorCode)
 			{
-				// Do we match this...?
-				Regex regEx = new Regex(GCC_REGEX_MATCH[i]);
-				if (regEx.IsMatch(line))
+				Match m = regex.Match(input);
+				if (!m.Success)
+					return null;
+
+				string typeStr = type.ToString().ToLower();
+				Debug.Assert(messageReplace != null); // parser must at least give a message
+
+				string message = regex.Replace(input, messageReplace);
+
+				Debug.Assert(fileGroup != 0);
+				string path = PathFixSlashes(m.Groups[fileGroup].Value);
+
+				if (lineGroup != 0)
 				{
-					// Good, we do. For now just grab the filename portion
-					string filename = regEx.Replace(line, GCC_REGEX_FILENAME[i]);
+					string line = m.Groups[lineGroup].Value;
 
-					try
+					if (columnGroup != 0)
 					{
-						// Brackets cause issues:
-						// C:\Projects\vs-android\vs-android_samples\san-angeles\CppSource\cams.h(49) error; (near initialization for 'sCamTracks[0]')
-						// So I'll remove them first
-						//line = line.Replace("(", "");
-						//line = line.Replace(")", "");
+						string column = m.Groups[columnGroup].Value;
 
-						// Attempt to convert to a fullpath. We'll drop out of this regex attempt if it fails, it'll throw an Exception.
-						string absPath = Path.GetFullPath(filename);
-
-						// All good then. Just do the final regex replace, appended after the resolved filename.
-						string lastBit = regEx.Replace(line, GCC_REGEX_REPLACE[i]);
-
-						string newLine = absPath + lastBit;
-
-						return newLine;
+						// has file, has line, has column
+						return string.Format("{0} ({1},{2}) : {3} {4}: {5}", path, line, column, typeStr, errorCode, message);
 					}
-					catch
+					else
 					{
-						continue;
+						// has file, has line, no column
+						return string.Format("{0} ({1}) : {2} {3}: {4}", path, line, typeStr, errorCode, message);
 					}
 				}
+				else
+				{
+					// has file, no line, no column
+					return string.Format("{0} : {1} {2}: {3}", path, typeStr, errorCode, message);
+				}
+			}
+		};
+
+		// Most aggressive (hardest) regex first. We short-circuit on the first match.
+		private static readonly ErrorParser[] GnuCompilerParsers =
+		{
+			// foo.c:123:456: error: foo is bar
+			new ErrorParser {
+				regex = new Regex(@"^" + REGEX_PATH + @":(\d+):(\d+): error: (.*)$"),
+				type = MessageType.Error,
+				fileGroup = 1,
+				lineGroup = 2,
+				columnGroup = 3,
+				messageReplace = "$4"
+			},
+
+			// foo.c:123:456: warning: foo is bar
+			new ErrorParser {
+				regex = new Regex(@"^" + REGEX_PATH + @":(\d+):(\d+): warning: (.*)$"),
+				type = MessageType.Warning,
+				fileGroup = 1,
+				lineGroup = 2,
+				columnGroup = 3,
+				messageReplace = "$4"
+			},
+
+			// foo.c:123: error: foo is bar
+			new ErrorParser {
+				regex = new Regex(@"^" + REGEX_PATH + @":(\d+): error: (.*)$"),
+				type = MessageType.Error,
+				fileGroup = 1,
+				lineGroup = 2,
+				messageReplace = "$3"
+			},
+
+			// foo.c:123: warning: foo is bar
+			new ErrorParser {
+				regex = new Regex(@"^" + REGEX_PATH + @":(\d+): warning: (.*)$"),
+				type = MessageType.Warning,
+				fileGroup = 1,
+				lineGroup = 2,
+				messageReplace = "$3"
+			}
+		};
+
+		private static readonly ErrorParser[] GnuLinkerParsers =
+		{
+			new ErrorParser {
+				regex = new Regex("^" + REGEX_PATH + @":?\(\.\w+\+.*\): [Ww]arning: (.*)$"),
+				type = MessageType.Warning,
+				fileGroup = 1,
+				messageReplace = "$2"
+			},
+
+			new ErrorParser {
+				regex = new Regex("^" + REGEX_PATH + @":?\(\.\w+\+.*\): [Ee]rror: (.*)$"),
+				type = MessageType.Error,
+				fileGroup = 1,
+				messageReplace = "$2"
+			},
+
+			new ErrorParser {
+				regex = new Regex("^" + REGEX_PATH + @":(\d+): [Ww]arning: (.*)$"),
+				type = MessageType.Warning,
+				fileGroup = 1,
+				lineGroup = 2,
+				messageReplace = "$3"
+			},
+
+			new ErrorParser {
+				regex = new Regex("^" + REGEX_PATH + @":(\d+): [Ee]rror: (.*)$"),
+				type = MessageType.Error,
+				fileGroup = 1,
+				lineGroup = 2,
+				messageReplace = "$3"
+			},
+
+			// Examples:
+			// foo.o:bar.c:123: undefined reference to 'baz'
+			// foo.o:bar.c:123: first defined here
+			new ErrorParser {
+				regex = new Regex("^" + REGEX_PATH + ":" + REGEX_PATH + @":(\d+): (.*)$"),
+				type = MessageType.Error,
+				fileGroup = 2,
+				lineGroup = 3,
+				messageReplace = "($1) $4"
+			},
+
+			// foo.o:bar.c:function construction vtable for CBaz: error: undefined reference ...
+			new ErrorParser {
+				regex = new Regex("^" + REGEX_PATH + ":" + REGEX_PATH + ":([^:]+): error: (.*)$"),
+				type = MessageType.Error,
+				// the file would be the object (since we don't get a relevant line in the source file anyway)
+				fileGroup = 1,
+				// Output would be:
+				//
+				// error: undefined reference ... (in bar.c:function construction vtable for CBaz)
+				//
+				messageReplace = "$4 (in $2:$3)"
+			}
+		};
+
+		static string ParseMessage(ErrorParser[] parsers, string input, string errorCode)
+		{
+			foreach (var parser in parsers)
+			{
+				string output = parser.Parse(input, errorCode);
+				if (output != null)
+					return output + Environment.NewLine;
 			}
 
-			return line;
+			return input; // input did not match any parser, return as-is
 		}
 
-	}
+		public static string ParseCompilerMessage(string input)
+		{
+			return ParseMessage(GnuCompilerParsers, input, "CC");
+		}
 
+		public static string ParseLinkerMessage(string input)
+		{
+			return ParseMessage(GnuLinkerParsers, input, "LINK");
+		}
+	}
 }

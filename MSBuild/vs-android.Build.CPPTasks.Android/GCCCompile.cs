@@ -446,7 +446,8 @@ namespace vs_android.Build.CPPTasks.Android
 		// Called when compiler outputs a line
 		protected override void LogEventsFromTextOutput(string singleLine, MessageImportance messageImportance)
 		{
-			base.LogEventsFromTextOutput(Utils.GCCOutputReplace(singleLine), messageImportance);
+			string formattedMessage = Utils.ParseCompilerMessage(singleLine);
+			base.LogEventsFromTextOutput(formattedMessage, messageImportance);
 		}
 
 		protected override string ToolName
