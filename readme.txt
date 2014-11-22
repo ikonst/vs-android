@@ -55,11 +55,14 @@ Highlights:
   * New toolchain: clang-3.4
   * New architecture: arm7v-a-hard
   * New standard C++ libraries (STL): libc++-shared, libc++-static
-  * Include directories are now ordered so that the user may override the system headers
   * Vastly improved Intellisense support
+  * Support for Link Library Dependencies of referenced projects
+  * Referenced projects are added to library dependencies (if Link Library Dependencies is set)
 
 Bug fixes:
+  * Include directories are now ordered so that the user may override the system headers
   * General properties can now be set through user property sheets
+  * Error message conversion (GNU style to VS style) is no longer sluggish
 
 New options:
   * Thumb Mode (ARM only)
