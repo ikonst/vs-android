@@ -43,8 +43,15 @@
         <CompileAs                    Condition="('%(ClCompile.CompileAs)' == 'Default' and ('%(ClCompile.Extension)' != '.c' and '%(ClCompile.Extension)' != '.s' and '%(ClCompile.Extension)' != '.asm'))">CompileAsCpp</CompileAs>
         <MinimalRebuildFromTracking   Condition="'$(BuildType)' != 'Build' or '$(ForceRebuild)' == 'true'">false</MinimalRebuildFromTracking>
         <BrowseInformation>false</BrowseInformation>
+      </ClCompile>
+    </ItemGroup>
 
-        <!-- Dont pass C standard to C++ and vice versa -->
+    <!--
+      Don't pass C standard to C++ and vice versa.
+      (Conditions depend CompileAs, so they cannot be merged into preceding ItemGroup.)
+    -->
+    <ItemGroup>
+      <ClCompile>
         <CLanguageStandard Condition="'%(ClCompile.CompileAs)' == 'CompileAsCpp'"></CLanguageStandard>
         <CppLanguageStandard Condition="'%(ClCompile.CompileAs)' == 'CompileAsC'"></CppLanguageStandard>
       </ClCompile>
