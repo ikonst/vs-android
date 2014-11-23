@@ -26,11 +26,13 @@ typedef char *__builtin_va_list, *__gnuc_va_list;
 #define __asm(...)
 #define __nonnull(...)
 #define __attribute__(...)
+#define __attribute(...)
 #define __extension__
 #define __inline__ inline
 #define __signed__ signed
 #define __restrict__
 #define __gthrw(...)
+#define __builtin_constant_p(exp) 0
 
 // clang language extensions
 #define __has_include(...) 0
