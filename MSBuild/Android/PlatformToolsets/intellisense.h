@@ -57,5 +57,3 @@ typedef char *__builtin_va_list, *__gnuc_va_list;
 #define __builtin_va_end(...)
 #define __builtin_vsnprintf(...)
 #define __null 0
-
-#endif
