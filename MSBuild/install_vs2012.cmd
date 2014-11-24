@@ -52,6 +52,9 @@ IF ERRORLEVEL 1 (
 	echo.Installing Android MSBuild files:
 	cd /d %~dp0
 	xcopy "Android\*.*" "%MsBuildCppDir%\Android" /E
+	REM Crude hack: MSBuild can be locking our task DLL.
+	REM             This eases the build-debug cycle.
+	taskkill /F /IM "MSBuild.exe"
 	xcopy "2012 DLL\*.dll" "%MsBuildCppDir%\Android" /E
 
 	if errorlevel 1 (
