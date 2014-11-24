@@ -59,3 +59,9 @@ typedef char *__builtin_va_list, *__gnuc_va_list;
 #define __builtin_va_end(...)
 #define __builtin_vsnprintf(...)
 #define __null 0
+
+// Inhibit inclusion of <linux/compiler.h>
+// It's empty starting from android-L but older versions contain:
+//  #define __builtin_warning(x, y...) (1)
+// which confuses Intellisense.
+#define __LINUX_COMPILER_H
