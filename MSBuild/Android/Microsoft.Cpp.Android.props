@@ -46,6 +46,12 @@
 
   </PropertyGroup>
 
+  <!-- Define defaults for all tools for property page-->
+  <PropertyGroup>
+    <TargetName Condition="'$(TargetName)' == ''">$(ProjectName)</TargetName>
+    <ExtensionsToDeleteOnClean Condition="'$(ExtensionsToDeleteOnClean)' == ''">*.o;*.tlog;*.pch</ExtensionsToDeleteOnClean>
+  </PropertyGroup>
+
   <!-- Bring in correct tool paths -->
   <Import Project="$(VCTargetsPath)\Platforms\Android\vs-android.ToolPaths.props" />
 

@@ -155,9 +155,25 @@
   <ItemDefinitionGroup Condition="$(VisualStudioVersion) != '10.0'">
     <Lib>
 
-      <TrackerLogDirectory        Condition="'%(Lib.TrackerLogDirectory)'           == ''">$(TLogLocation)</TrackerLogDirectory>
+      <TrackerLogDirectory        Condition="'%(Lib.TrackerLogDirectory)'          == ''">$(TLogLocation)</TrackerLogDirectory>
+      <MinimalRebuildFromTracking Condition="'%(Lib.MinimalRebuildFromTracking)'   == ''">true</MinimalRebuildFromTracking>
+      <OutputFile                 Condition="'%(Lib.OutputFile)'                   == ''">$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
 
     </Lib>
+  </ItemDefinitionGroup>
+
+  <!-- Project Reference defaults. Additions for Visual Studio 2012 -->
+  <ItemDefinitionGroup Condition="$(VisualStudioVersion) != '10.0'">
+   <ProjectReference>
+
+      <LinkLibraryDependencies      Condition="'%(ProjectReference.LinkLibraryDependencies)' == '' and '$(ConfigurationType)' == 'StaticLibrary'">false</LinkLibraryDependencies>
+      <LinkLibraryDependencies      Condition="'%(ProjectReference.LinkLibraryDependencies)' == ''">true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs   Condition="'%(ProjectReference.UseLibraryDependencyInputs)' == ''">false</UseLibraryDependencyInputs>
+      <ReferenceOutputAssembly      Condition="'%(ProjectReference.ReferenceOutputAssembly)' == ''">true</ReferenceOutputAssembly>
+      <Private                      Condition="'%(ProjectReference.Private)' == ''">true</Private>
+      <SetPlatform                  Condition="'%(ProjectReference.SetPlatform)' == ''">Platform=Android</SetPlatform>
+
+    </ProjectReference>
   </ItemDefinitionGroup>
 
   <!-- Ant Build defaults -->
