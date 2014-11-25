@@ -63,18 +63,35 @@
 
   <!-- Settings specific to each build type -->
   <PropertyGroup Condition="'$(ConfigurationType)' == 'StaticLibrary'">
+    <GenerateSharedLibrary>false</GenerateSharedLibrary>
     <LibCompiled>true</LibCompiled>
     <TargetExt>.a</TargetExt>
+    <OutputType>staticlibrary</OutputType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(ConfigurationType)' == 'Application'">
+    <GenerateSharedLibrary>true</GenerateSharedLibrary>
     <LinkCompiled>true</LinkCompiled>
     <TargetExt>.so</TargetExt>
+    <OutputType>apk</OutputType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(ConfigurationType)' == 'Executable'">
+    <GenerateSharedLibrary>false</GenerateSharedLibrary>
+    <LinkCompiled>true</LinkCompiled>
+    <TargetExt></TargetExt>
+    <!--
+      Our TargetExt is empty, so we must have a custom OutputType
+      or else Microsoft.Common.CurrentVersion.targets will override TargetExt.
+    -->
+    <OutputType>androidexecutable</OutputType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(ConfigurationType)' == 'DynamicLibrary'">
+    <GenerateSharedLibrary>true</GenerateSharedLibrary>
     <LinkCompiled>true</LinkCompiled>
     <TargetExt>.so</TargetExt>
+    <OutputType>library</OutputType>
   </PropertyGroup>
 
   <!-- Deployment defaults -->

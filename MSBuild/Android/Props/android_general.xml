@@ -109,6 +109,7 @@
                 Category="ProjectDefaults"
                 F1Keyword="VC.Project.VCConfiguration.ConfigurationType">
     <EnumValue Name="Application" DisplayName="Application (.so -> .apk)" />
+    <EnumValue Name="Executable" DisplayName="Native Executable" />
     <EnumValue Name="DynamicLibrary" DisplayName="Dynamic Library (.so)" />
     <EnumValue Name="StaticLibrary" DisplayName="Static library (.a)" />
   </EnumProperty>

@@ -119,7 +119,7 @@
       <NoWcharSizeWarning         Condition="'%(Link.NoWcharSizeWarning)'           == ''">false</NoWcharSizeWarning>
       <NoEnumSizeWarning          Condition="'%(Link.NoEnumSizeWarning)'            == ''">false</NoEnumSizeWarning>
 
-      <GenerateSharedLibrary      Condition="'%(Link.GenerateSharedLibrary)'        == ''">true</GenerateSharedLibrary>
+      <GenerateSharedLibrary      Condition="'%(Link.GenerateSharedLibrary)'        == ''">$(GenerateSharedLibrary)</GenerateSharedLibrary>
       <NoExecStack                Condition="'%(Link.NoExecStack)'                  == ''">$(NoExecStack)</NoExecStack>
       <ThumbMode                  Condition="'%(Link.ThumbMode)'                    == ''">true</ThumbMode>
       <RelocationReadOnly         Condition="'%(Link.RelocationReadOnly)'           == ''">true</RelocationReadOnly>
